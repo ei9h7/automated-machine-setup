@@ -1,5 +1,5 @@
 ---
-downloads: ~/.ansible-downloads/
+downloads: /Users/ei9h7/.ansible-downloads/
 
 configure_dotfiles: true
 configure_terminal: true
@@ -83,13 +83,30 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/ei9h7/dotfiles-1.git
+dotfiles_repo: https://github.com/ei9h7/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/projects/dotfiles
+dotfiles_repo_local_destination: /Users/ei9h7/projects/dotfiles
 dotfiles_files:
+  - .atom/*
+  - .config/*
+  - .cups/*
+  - .gnupg/*
+  - .iterm2/*
+  - .tmux/*
+  - .bash_profile
+  - .bashrc
   - .gitignore
+  - .gitmodules
+  - .hyper.js
   - .inputrc
-  - .osx
+  - .mackup.cfg
+  - .nanorc
+  - .profile
+  - .screenrc
+  - .tmux.conf
+  - .vimrc
+  - .zshrc
+
 homebrew_installed_packages:
 # - ansible # Installed via Pip.
   - autoconf
@@ -113,6 +130,7 @@ homebrew_installed_packages:
   - gh
   - git
   - go
+  - hub
   - lazydocker
   - libtool
   - python@3.9
@@ -121,7 +139,6 @@ homebrew_installed_packages:
   - libyubikey
   - luarocks
   - m4
-  - macvim
   - micro
   - node
   - nyancat
@@ -140,17 +157,13 @@ homebrew_installed_packages:
   - tmux
   - tmux-xpanes
   - wimlib
-  - wireshark
   - x11vnc
   - ykpers
   - yubico-piv-tool
   - yubikey-agent
   - zsh
-  - zsh-autosuggestions
-  - zsh-completions
   - zsh-git-prompt
   - zsh-lovers
-  - zsh-syntax-highlighting
 
 homebrew_taps:
   - homebrew/bundle
@@ -158,6 +171,7 @@ homebrew_taps:
   - homebrew/cask-drivers
   - homebrew/cask-fonts
   - homebrew/cask-versions
+  - homebrew/command-not-found
   - homebrew/core
   - homebrew/services
   - mas-cli/tap
