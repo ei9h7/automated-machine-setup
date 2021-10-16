@@ -93,66 +93,66 @@ dotfiles_files:
   - .vimrc
 
 homebrew_installed_packages:
-    # - ansible # Installed via Pip.
-      - autoconf
-      - automake
-      - bash
-      - bash-completion
-      - bash-git-prompt
-      - bash-snippets
-      - ca-certificates
-      - ccat
-    # - docker
-      - docker-completion
-    # - docker-compose
-    # - docker-compose-completion
-    # - docker-machine
-    # - docker-machine-parallels
-    # - docker-toolbox
-      - e2fsprogs
-      - ethereum
-      - fortune
-      - gh
-      - git
-      - go
-      - lazydocker
-      - libtool
-      - python@3.9
-      - imagemagick
-      - libmusicbrainz
-      - libyubikey
-      - luarocks
-      - m4
-      - macvim
-      - micro
-      - node
-      - nyancat
-      - openjdk
-      - p7zip
-      - pam_yubico
-      - perl@5.18
-      - rclone
-      - rsync
-      - rsync-time-backup
-      - screen
-      - shpotify
-      - storj-uplink
-      - thefuck
-      - tldr
-      - tmux
-      - tmux-xpanes
-      - wimlib
-      - wireshark
-      - x11vnc
-      - ykpers
-      - yubico-piv-tool
-      - yubikey-agent
-      - zsh
-      - zsh-autosuggestions
-      - zsh-completions
-      - zsh-git-prompt
-      - zsh-lovers
-      - zsh-syntax-highlighting
+# - ansible # Installed via Pip.
+  - autoconf
+  - automake
+  - bash
+  - bash-completion
+  - bash-git-prompt
+  - bash-snippets
+  - ca-certificates
+  - ccat
+# - docker
+# - docker-completion
+# - docker-compose
+# - docker-compose-completion
+# - docker-machine
+# - docker-machine-parallels
+# - docker-toolbox
+  - e2fsprogs
+  - ethereum
+  - fortune
+  - gh
+  - git
+  - go
+  - lazydocker
+  - libtool
+  - python@3.9
+  - imagemagick
+  - libmusicbrainz
+  - libyubikey
+  - luarocks
+  - m4
+  - macvim
+  - micro
+  - node
+  - nyancat
+  - openjdk
+  - p7zip
+  - pam_yubico
+  - perl@5.18
+  - rclone
+  - rsync
+  - rsync-time-backup
+  - screen
+  - shpotify
+  - storj-uplink
+  - thefuck
+  - tldr
+  - tmux
+  - tmux-xpanes
+  - wimlib
+  - wireshark
+  - x11vnc
+  - ykpers
+  - yubico-piv-tool
+  - yubikey-agent
+  - zsh
+  - zsh-autosuggestions
+  - zsh-completions
+  - zsh-git-prompt
+  - zsh-lovers
+  - zsh-syntax-highlighting
 
 homebrew_taps:
   - homebrew/bundle
@@ -167,78 +167,78 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-      - 1clipboard
-      - amazon-music
-      - angry-ip-scanner
-      - appcleaner
-      - atom
-      - balenaetcher
-      - backuploupe
-      - battle-net
-      - boxcryptor
-      - carbon-copy-cloner5
-      - command-pad
-      - docker
-      - duplicati
-      - eloston-chromium
-      - font-fira-code-nerd-font
-      - font-fira-mono-nerd-font
-      - font-hack-nerd-font
-      - font-jetbrains-mono-nerd-font
-      - font-meslo-lg-nerd-font
-      - font-victor-mono-nerd-font
-      - gitkraken
-      - google-chrome
-      - google-drive-file-stream
-      - gpg-suite-no-mail
-      - icanhazshortcut
-      - jetbrains-toolbox
-      - keka
-      - kekaexternalhelper
-      - keybase
-      - lens
-      - macfuse
-      - macs-fan-control
-      - macvim
-      - mdrp
-      - microsoft-auto-update
-      - microsoft-office
-      - multipass
-      - musicbrainz-picard
-      - nordlocker
-      - nordpass
-      - nordvpn
-      - nvidia-geforce-now
-      - obs
-      - obs-ndi
-      - obs-virtualcam
-      - obs-websocket
-      - parallels12
-      - phpstorm
-      - plex
-      - plexamp
-      - pycharm-edu
-      - raspberry-pi-imager
-      - spotify
-      - spotify-now-playing
-      - steam
-      - therm
-      - the-unarchiver
-      - tunnelblick
-      - unetbootin
-      - unity
-      - unity-hub
-      - vagrant
-      - virtualbox
-      - visual-studio
-      - visual-studio-code
-      - vlc
-      - vnc-viewer
-      - wireshark
-      - yubico-authenticator
-      - yubico-yubikey-manager
-      - yubico-yubikey-personalization-gui
-      - yubico-yubikey-piv-manager
+  - 1clipboard
+  - amazon-music
+  - angry-ip-scanner
+  - appcleaner
+  - atom
+  - balenaetcher
+  - backuploupe
+  - battle-net
+  - boxcryptor
+  - carbon-copy-cloner5
+  - command-pad
+  - docker
+  - duplicati
+  - eloston-chromium
+  - font-fira-code-nerd-font
+  - font-fira-mono-nerd-font
+  - font-hack-nerd-font
+  - font-jetbrains-mono-nerd-font
+  - font-meslo-lg-nerd-font
+  - font-victor-mono-nerd-font
+  - gitkraken
+  - google-chrome
+  - google-drive-file-stream
+  - gpg-suite-no-mail
+  - icanhazshortcut
+  - jetbrains-toolbox
+  - keka
+  - kekaexternalhelper
+  - keybase
+  - lens
+  - macfuse
+  - macs-fan-control
+  - macvim
+  - mdrp
+  - microsoft-auto-update
+  - microsoft-office
+  - multipass
+  - musicbrainz-picard
+  - nordlocker
+  - nordpass
+  - nordvpn
+  - nvidia-geforce-now
+  - obs
+  - obs-ndi
+  - obs-virtualcam
+  - obs-websocket
+  - parallels12
+  - phpstorm
+  - plex
+  - plexamp
+  - pycharm-edu
+  - raspberry-pi-imager
+  - spotify
+  - spotify-now-playing
+  - steam
+  - therm
+  - the-unarchiver
+  - tunnelblick
+  - unetbootin
+  - unity
+  - unity-hub
+  - vagrant
+  - virtualbox
+  - visual-studio
+  - visual-studio-code
+  - vlc
+  - vnc-viewer
+  - wireshark
+  - yubico-authenticator
+  - yubico-yubikey-manager
+  - yubico-yubikey-personalization-gui
+  - yubico-yubikey-piv-manager
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
@@ -275,8 +275,8 @@ mas_installed_apps:
 mas_email: "eight0n@me.com"
 # mas_password: ""
 
-# osx_script: "~/.osx --no-restart"
-osx_script: "system_settings.sh"
+osx_script: "~/.osx --no-restart"
+# osx_script: "system_settings.sh"
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
@@ -311,7 +311,146 @@ sublime_package_control:
   - "TrailingSpaces"
 
 # Set to 'true' to configure Visual Studio Code
-configure_visual-studio-code: true
+configure_vsc: true
+vsc_user: ei9h7
+vsc_extensions:
+  - azblockchain.azure-blockchain
+  - coenraads.bracket-pair-colorizer-2
+  - aaronyoung.dark-synthwave-vscode
+  - ms-azuretools.vscode-docker
+  - formulahendry.docker-explorer
+  - quentingruber.dockerfiletemplate
+  - tqrhsn.vscode-docker-registry-explorer
+  - george3447.docker-run
+  - dotiful.dotfiles-syntax-highlighting
+  - blake-mealey.generate-wt-scheme
+  - mhutchie.git-graph
+  - github.codespaces
+  - github.vscode-pull-request-github
+  - ntc.integrated-terminal-tasks
+  - hoovercj.vscode-power-mode
+  - stuyk.powermodesounds
+  - ms-python.python
+  - dhedgecock.radical-vscode
+  - ms-vscode-remote.remote-containers
+  - ms-vscode-remote.remote-ssh
+  - ms-vscode-remote.remote-ssh-edit
+  - ms-vscode-remote.remote-wsl
+  - ms-vscode-remote.vscode-remote-extensionpack
+  - juanblanco.solidity
+  - robbowen.synthwave-vscode
+  - visualstudioexptteam.vscodeintellicode
+  - dunstontc.vscode-docker-syntax
+  - redhat.vscode-yaml
+  - ms-vscode.powershell
+vsc_settings_overwrite: yes
+vsc_custom_config: |
+{
+// THEME
+    "workbench.colorTheme": "SynthWave '84",
+    "synthwave84.brightness": 1,
+    "darkSynthwave84.brightness": 1,
+    "powermode.enabled": true,
+
+// EDITOR SETTINGS
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontFamily": "VictorMono Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 17,
+    "editor.letterSpacing": 1,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+
+// TERMINAL SETTINGS
+    "terminal.integrated.fontFamily": "VictorMono Nerd Font",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.letterSpacing": 1,
+    "terminal.integrated.tabs.enabled": true,
+
+    // macOS
+    "terminal.external.osxExec": "Therm.app",
+    "terminal.integrated.env.osx": {},
+    "terminal.integrated.macOptionIsMeta": true,
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "path": "bash"
+        },
+        "zsh": {
+            "path": "zsh",
+            "args": ["-l"]
+        },
+        "pwsh": {
+            "path": "pwsh"
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "bash",
+
+    // WINDOWS
+    "terminal.integrated.profiles.windows": {
+        "PowerShell 7": {
+            "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+        },
+        "Command Prompt": {
+            "path": "C:\\Windows\\System32\\cmd.exe",
+        },
+        "Debian (WSL)": {
+            "path": "C:\\Windows\\System32\\wsl.exe -d Debian",
+        },
+        "Kali (WSL)": {
+            "path": "C:\\Windows\\System32\\wsl.exe -d Kali",
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Debian (WSL)",
+    "terminal.external.windowsExec": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.8.1444.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
+
+    // LINUX
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "screen": {
+            "path": "screen"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "screen",
+
+// EXTENSION SETTINGS
+    "bracket-pair-colorizer-2.colors": [
+        "#DFF959",
+        "#F834BB",
+        "#2BF5E9",
+        "#D831D7"
+    ],
+    "git-graph.graph.colours": [
+        "#FF428E",
+        "#A8FFEF",
+        "#DFF959",
+        "#F7A409",
+        "#F834BB",
+        "#2BF5E9",
+        "#D831D7",
+        "#FF594C"
+    ],
+    "DockerRun.DisableAutoGenerateConfig": true,
+    "workbench.sideBar.location": "right",
+    "git.enableCommitSigning": true,
+    "redhat.telemetry.enabled": true,
+    "telemetry.telemetryLevel": "off"
+}
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
