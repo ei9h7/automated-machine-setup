@@ -90,8 +90,6 @@ dotfiles_files:
   - .gitignore
   - .inputrc
   - .osx
-  - .vimrc
-
 homebrew_installed_packages:
 # - ansible # Installed via Pip.
   - autoconf
@@ -272,8 +270,8 @@ mas_installed_apps:
   - { id: 497799835, name: "Xcode" }
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
-mas_email: "eight0n@me.com"
-# mas_password: ""
+# mas_email: ""
+# mas_password: "" # in config.yml which is gitignored
 
 osx_script: "~/.osx --no-restart"
 # osx_script: "system_settings.sh"
