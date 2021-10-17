@@ -1,9 +1,45 @@
 ---
 downloads: /Users/ei9h7/.ansible-downloads/
 
-configure_dotfiles: true
-configure_terminal: true
+configure_sudoers: false
+sudoers_custom_config: ''
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
+
 configure_osx: true
+osx_script: "/Users/ei9h7/projects/dotfiles/.macos-defaults --no-restart"
+
+configure_dotfiles: true
+dotfiles_repo: https://github.com/ei9h7/dotfiles.git
+dotfiles_repo_version: master
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: /Users/ei9h7/projects/dotfiles
+dotfiles_home: /Users/ei9h7
+dotfiles_files:
+# - .atom/*
+# - .config/*
+# - .cups/*
+# - .gnupg/*
+  - .iterm2
+# - .tmux/*
+  - .bash_profile
+  - .bashrc
+  - .gitignore
+  - .gitmodules
+  - .hyper.js
+  - .inputrc
+  - .mackup.cfg
+  - .nanorc
+  - .profile
+  - .screenrc
+  - .tmux.conf
+  - .vimrc
+  - .zshrc
+  - .zshenv
+
+configure_terminal: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: true
@@ -76,37 +112,6 @@ dockitems_persist:
     path: "/Applications/NVIDIA GeForce NOW.app/"
     pos: 18
 
-configure_sudoers: false
-sudoers_custom_config: ''
-# Example:
-# sudoers_custom_config: |
-#   # Allow users in admin group to use sudo with no password.
-#   %admin ALL=(ALL) NOPASSWD: ALL
-
-dotfiles_repo: https://github.com/ei9h7/dotfiles.git
-dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: /Users/ei9h7/projects/dotfiles
-dotfiles_files:
-  - .atom/*
-  - .config/*
-  - .cups/*
-  - .gnupg/*
-  - .iterm2/*
-  - .tmux/*
-  - .bash_profile
-  - .bashrc
-  - .gitignore
-  - .gitmodules
-  - .hyper.js
-  - .inputrc
-  - .mackup.cfg
-  - .nanorc
-  - .profile
-  - .screenrc
-  - .tmux.conf
-  - .vimrc
-  - .zshrc
-
 homebrew_installed_packages:
 # - ansible # Installed via Pip.
   - autoconf
@@ -127,9 +132,11 @@ homebrew_installed_packages:
   - e2fsprogs
   - ethereum
   - fortune
+  - gcc
   - gh
   - git
   - go
+  - grc
   - hub
   - lazydocker
   - libtool
@@ -287,8 +294,6 @@ mas_installed_apps:
 # mas_email: ""
 # mas_password: "" # in config.yml which is gitignored
 
-osx_script: "/Users/ei9h7/projects/dotfiles/.macos-defaults --no-restart"
-
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
@@ -296,10 +301,10 @@ composer_packages: []
 # - name: drush
 #   state: present # present/absent, default: present
 #   version: "^8.1" # default: N/A
-gem_packages: []
-# - name: bundler
-#   state: present # present/absent/latest, default: present
-#   version: "~> 1.15.1" # default: N/A
+gem_packages: 
+  - name: colorls
+    state: present # present/absent/latest, default: present
+    #version: # default: N/A
 npm_packages: []
 # - name: webpack
 #   state: present # present/absent/latest, default: present
