@@ -13,17 +13,14 @@
 
   roles:
     - role: elliotweiser.osx-command-line-tools
-    - role: geerlingguy.mac.homebrew
+    - role: geerlingguy.homebrew
       tags: ['homebrew']
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags: ['dotfiles']
-    - role: geerlingguy.mac.mas
+#    - role: geerlingguy.dotfiles
+#      when: configure_dotfiles
+#      tags: ['dotfiles']
+    - role: geerlingguy.mas
       when: mas_installed_apps or mas_installed_app_ids
       tags: ['mas']
-    - role: geerlingguy.mac.dock
-      when: configure_dock
-      tags: ['dock']
     - role: gantsign.visual-studio-code
       users:
         - username: "{{ vsc_user }}"
@@ -38,13 +35,21 @@
       when: configure_sudoers
       tags: ['sudoers']
 
-    - import_tasks: tasks/terminal.yml
-      when: configure_terminal
-      tags: ['terminal']
-
     - import_tasks: tasks/osx.yml
       when: configure_osx
       tags: ['osx']
+
+    - import_tasks: tasks/dotfiles.yml
+      when: configure_dotfiles
+      tags: ['dotfiles']
+
+    - import_tasks: tasks/dock.yml
+      when: configure_dock
+      tags: ['dock']
+
+    - import_tasks: tasks/terminal.yml
+      when: configure_terminal
+      tags: ['terminal']
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
