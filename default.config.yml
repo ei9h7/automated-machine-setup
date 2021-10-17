@@ -287,8 +287,7 @@ mas_installed_apps:
 # mas_email: ""
 # mas_password: "" # in config.yml which is gitignored
 
-osx_script: "~/.osx --no-restart"
-# osx_script: "system_settings.sh"
+osx_script: "/Users/ei9h7/projects/dotfiles/.macos-defaults --no-restart"
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
