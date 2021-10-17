@@ -112,7 +112,6 @@ dockitems_persist:
     path: "/Applications/NVIDIA GeForce NOW.app/"
     pos: 18
 
-
 configure_homebrew: true
 homebrew_repo: https://github.com/Homebrew/brew
 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
