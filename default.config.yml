@@ -112,6 +112,18 @@ dockitems_persist:
     path: "/Applications/NVIDIA GeForce NOW.app/"
     pos: 18
 
+
+configure_homebrew: true
+homebrew_repo: https://github.com/Homebrew/brew
+homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
+homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
+homebrew_upgrade_all_packages: false
+homebrew_cask_accept_external_apps: false
+homebrew_use_brewfile: false
+homebrew_brewfile_dir: "$DOTFILES"
+homebrew_clear_cache: false
+homebrew_folders_additional: []
 homebrew_installed_packages:
 # - ansible # Installed via Pip.
   - autoconf
@@ -167,11 +179,11 @@ homebrew_installed_packages:
   - x11vnc
   - ykpers
   - yubico-piv-tool
-  - yubikey-agent
+  - { name: yubikey-agent, install_options: "restart_service: true" }
   - zsh
   - zsh-git-prompt
   - zsh-lovers
-
+homebrew_uninstalled_packages: []
 homebrew_taps:
   - homebrew/bundle
   - homebrew/cask
@@ -183,7 +195,6 @@ homebrew_taps:
   - homebrew/services
   - mas-cli/tap
   - nrlquaker/createzap
-
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - 1clipboard
@@ -258,6 +269,7 @@ homebrew_cask_apps:
   - yubico-yubikey-manager
   - yubico-yubikey-personalization-gui
   - yubico-yubikey-piv-manager
+homebrew_cask_uninstalled_apps: []
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
