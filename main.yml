@@ -15,9 +15,6 @@
       tags: ['homebrew']
 
   roles:
-    - role: geerlingguy.mas
-      when: mas_installed_apps or mas_installed_app_ids
-      tags: ['mas']
     - role: gantsign.visual-studio-code
       users:
         - username: "{{ vsc_user }}"
@@ -35,6 +32,10 @@
     - import_tasks: tasks/homebrew.yml
       when: configure_homebrew
       tags: ['homebrew']
+
+    - import_tasks: tasks/mas.yml
+      when: configure_macstore
+      tags: ['mas']
 
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers

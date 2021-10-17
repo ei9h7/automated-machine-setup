@@ -270,11 +270,12 @@ homebrew_cask_apps:
   - yubico-yubikey-piv-manager
 homebrew_cask_uninstalled_apps: []
 
-# See `geerlingguy.mas` role documentation for usage instructions.
+configure_macstore: true
+mas_installed_app_ids: []  # Deprecated
 mas_installed_apps:
   - { id: 937984704, name: "Amphetamine" }
   - { id: 1236045954, name: "Canary Mail" }
-  - { id: 696977615, name: "Capo" }
+#  - { id: 696977615, name: "Capo" }
   - { id: 484889220, name: "Cryptext" }
   - { id: 1012138285, name: "Crypto-Maker" }
   - { id: 425264550, name: "Disk Speed Test" }
@@ -304,6 +305,8 @@ mas_installed_apps:
   - { id: 1438287690, name: "ZipMounter Lite" }
 # mas_email: ""
 # mas_password: "" # in config.yml which is gitignored
+mas_upgrade_all_apps: false
+mas_signin_dialog: false
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
