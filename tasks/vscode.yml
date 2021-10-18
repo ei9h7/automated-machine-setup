@@ -1,0 +1,19 @@
+---
+- name: Create a default VSCode configuration
+  copy:
+    src: "{{ vsc_custom_config }}"
+    dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/settings.json
+    owner: "{{ lookup('env', 'USER') }}"
+    force: "{{ vsc_settings_overwrite }}"
+
+- name: Create a default VSCode keybinding configuration
+  template:
+    src: "{{ vsc_custom_keys }}"
+    dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/keybindings.json
+    owner: "{{ lookup('env', 'USER') }}"
+    force: "{{ vsc_keys_overwrite }}"
+
+- name: Install VSCode extensions
+  shell: code --install-extension {{ item }}
+  with_items: "{{ vsc_extensions }}"
+

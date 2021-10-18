@@ -14,16 +14,6 @@
       when: configure_homebrew
       tags: ['homebrew']
 
-  roles:
-    - role: gantsign.visual-studio-code
-      users:
-        - username: "{{ vsc_user }}"
-          visual_studio_code_extensions: "{{ vsc_extensions }}"
-          visual_studio_code_settings_overwrite: "{{ vsc_settings_overwrite }}"
-          visual_studio_code_settings: "{{ vsc_custom_config }}"
-      when: configure_vsc
-      tags: ['visual-studio-code']
-
   tasks:
     - import_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
@@ -56,9 +46,9 @@
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
 
-    - import_tasks: tasks/sublime-text.yml
-      when: configure_sublime
-      tags: ['sublime-text']
+    - import_tasks: tasks/vscode.yml
+      when: configure_vsc
+      tags: ['visual-studio-code']
 
     - name: Run configured post-provision ansible task files.
       include_tasks: "{{ outer_item }}"
