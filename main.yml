@@ -9,50 +9,50 @@
       include_vars: "{{ item }}"
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
-      tags: ['always']
+      tags: ['user']
     - include_vars: vars/homebrew.yml
       when: configure_homebrew
-      tags: ['homebrew']
+      tags: ['homebrew','user']
 
   tasks:
     - import_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
-      tags: ['dotfiles']
+      tags: ['dotfiles','user']
 
     - import_tasks: tasks/homebrew.yml
       when: configure_homebrew
-      tags: ['homebrew']
+      tags: ['homebrew','user']
 
     - import_tasks: tasks/mas.yml
       when: configure_macstore
-      tags: ['mas']
+      tags: ['mas','user']
 
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
-      tags: ['sudoers']
+      tags: ['sudoers','user']
 
     - import_tasks: tasks/osx.yml
       when: configure_osx
-      tags: ['osx']
+      tags: ['osx','sudo']
 
     - import_tasks: tasks/dock.yml
       when: configure_dock
-      tags: ['dock']
+      tags: ['dock','user']
 
     - import_tasks: tasks/terminal.yml
       when: configure_terminal
-      tags: ['terminal']
+      tags: ['terminal','user']
 
     - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
+      tags: ['extra-packages','user']
 
     - import_tasks: tasks/vscode.yml
       when: configure_vsc
-      tags: ['visual-studio-code']
+      tags: ['visual-studio-code','user']
 
     - name: Run configured post-provision ansible task files.
       include_tasks: "{{ outer_item }}"
       loop_control:
         loop_var: outer_item
       with_fileglob: "{{ post_provision_tasks|default(omit) }}"
-      tags: ['post']
+      tags: ['post','user']

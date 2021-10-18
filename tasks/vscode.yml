@@ -1,4 +1,7 @@
 ---
+- name: Ensure VSCode is installed.
+  homebrew: name=visual-studio-code state=present
+
 - name: Create a default VSCode configuration
   copy:
     src: "{{ vsc_custom_config }}"
