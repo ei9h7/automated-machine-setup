@@ -1,29 +1,17 @@
 ---
-downloads: /Users/ei9h7/.ansible-downloads/
-
-configure_sudoers: false
-sudoers_custom_config: ''
-# Example:
-# sudoers_custom_config: |
-#   # Allow users in admin group to use sudo with no password.
-#   %admin ALL=(ALL) NOPASSWD: ALL
-
-configure_osx: true
-osx_script: "/Users/ei9h7/projects/dotfiles/.macos-defaults --no-restart"
+downloads: /Users/{{ lookup('env', 'USER') }}/.ansible-downloads/
 
 configure_dotfiles: true
 dotfiles_repo: https://github.com/ei9h7/dotfiles.git
 dotfiles_repo_version: master
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: /Users/ei9h7/projects/dotfiles
-dotfiles_home: /Users/ei9h7
+dotfiles_repo_local_destination: /Users/{{ lookup('env', 'USER') }}/projects/dotfiles
+dotfiles_home: /Users/{{ lookup('env', 'USER') }}
 dotfiles_files:
-# - .atom/*
-# - .config/*
-# - .cups/*
-# - .gnupg/*
+  - .config/htop
+  - .config/neofetch
+  - .config/thefuck
   - .iterm2
-# - .tmux/*
   - .bash_profile
   - .bashrc
   - .gitignore
@@ -39,6 +27,20 @@ dotfiles_files:
   - .zshrc
   - .zshenv
 
+configure_sudoers: false
+sudoers_custom_config: ''
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
+
+configure_osx: true
+osx_script: "/Users/{{ lookup('env', 'USER') }}/projects/dotfiles/.macos-defaults --no-restart"
+# Set default shell (choose only one)
+set_zsh: false
+set_bash: true
+
+# Set to 'true' to configure the terminal theme etc
 configure_terminal: true
 
 # Set to 'true' to configure the Dock via dockutil.
@@ -296,11 +298,11 @@ mas_installed_apps:
   - { id: 1099475282, name: "SnailGit Lite" }
   - { id: 707452888, name: "Spike Email" }
   - { id: 1452212620, name: "StartUp" }
-  - { id: 1496833156, name: "Swift Playgrounds" }
+# - { id: 1496833156, name: "Swift Playgrounds" }
   - { id: 1102494854, name: "System Designer" }
   - { id: 571654652, name: "Toolbox for Pages" }
   - { id: 1480933944, name: "Vimari" }
-  - { id: 497799835, name: "Xcode" }
+# - { id: 497799835, name: "Xcode" }
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
 # mas_email: ""
@@ -315,7 +317,7 @@ composer_packages: []
 # - name: drush
 #   state: present # present/absent, default: present
 #   version: "^8.1" # default: N/A
-gem_packages: 
+gem_packages:
   - name: colorls
     state: present # present/absent/latest, default: present
     #version: # default: N/A
@@ -328,21 +330,8 @@ pip_packages: []
 #   state: present # present/absent/latest, default: present
 #   version: "0.16.3" # default: N/A
 
-# Set to 'true' to configure Sublime Text.
-configure_sublime: false
-sublime_base_path: '~/Library/Application Support/Sublime Text'
-sublime_config_path: "Packages/User"
-sublime_package_control:
-  - "Dockerfile Syntax Highlighting"
-  - "FileDiffs"
-  - "GitHub Flavored Markdown Preview"
-  - "Package Control"
-  - "Pretty JSON"
-  - "TrailingSpaces"
-
 # Set to 'true' to configure Visual Studio Code
 configure_vsc: true
-vsc_user: ei9h7
 vsc_extensions:
   - azblockchain.azure-blockchain
   - coenraads.bracket-pair-colorizer-2
@@ -373,114 +362,10 @@ vsc_extensions:
   - dunstontc.vscode-docker-syntax
   - redhat.vscode-yaml
   - ms-vscode.powershell
-vsc_settings_overwrite: yes
-vsc_custom_config: |
-  {
-  // THEME
-      "workbench.colorTheme": "SynthWave '84",
-      "synthwave84.brightness": 1,
-      "darkSynthwave84.brightness": 1,
-      "powermode.enabled": true,
-
-  // EDITOR SETTINGS
-      "editor.suggestSelection": "first",
-      "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-      "atomKeymap.promptV3Features": true,
-      "editor.multiCursorModifier": "ctrlCmd",
-      "editor.formatOnPaste": true,
-      "workbench.startupEditor": "newUntitledFile",
-      "editor.fontFamily": "VictorMono Nerd Font",
-      "editor.fontLigatures": true,
-      "editor.fontSize": 17,
-      "editor.letterSpacing": 1,
-      "workbench.editorAssociations": {
-          "*.ipynb": "jupyter.notebook.ipynb"
-      },
-
-  // TERMINAL SETTINGS
-      "terminal.integrated.fontFamily": "VictorMono Nerd Font",
-      "terminal.integrated.copyOnSelection": true,
-      "terminal.integrated.fontSize": 15,
-      "terminal.integrated.letterSpacing": 1,
-      "terminal.integrated.tabs.enabled": true,
-
-      // macOS
-      "terminal.external.osxExec": "Therm.app",
-      "terminal.integrated.env.osx": {},
-      "terminal.integrated.macOptionIsMeta": true,
-      "terminal.integrated.profiles.osx": {
-          "bash": {
-              "path": "bash"
-          },
-          "zsh": {
-              "path": "zsh",
-              "args": ["-l"]
-          },
-          "pwsh": {
-              "path": "pwsh"
-          }
-      },
-      "terminal.integrated.defaultProfile.osx": "bash",
-
-      // WINDOWS
-      "terminal.integrated.profiles.windows": {
-          "PowerShell 7": {
-              "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-          },
-          "Command Prompt": {
-              "path": "C:\\Windows\\System32\\cmd.exe",
-          },
-          "Debian (WSL)": {
-              "path": "C:\\Windows\\System32\\wsl.exe -d Debian",
-          },
-          "Kali (WSL)": {
-              "path": "C:\\Windows\\System32\\wsl.exe -d Kali",
-          }
-      },
-      "terminal.integrated.defaultProfile.windows": "Debian (WSL)",
-      "terminal.external.windowsExec": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_1.8.1444.0_x64__8wekyb3d8bbwe\\WindowsTerminal.exe",
-
-      // LINUX
-      "terminal.integrated.profiles.linux": {
-          "bash": {
-              "path": "bash"
-          },
-          "zsh": {
-              "path": "zsh"
-          },
-          "screen": {
-              "path": "screen"
-          },
-          "pwsh": {
-              "path": "pwsh",
-              "icon": "terminal-powershell"
-          }
-      },
-      "terminal.integrated.defaultProfile.linux": "screen",
-
-  // EXTENSION SETTINGS
-      "bracket-pair-colorizer-2.colors": [
-          "#DFF959",
-          "#F834BB",
-          "#2BF5E9",
-          "#D831D7"
-      ],
-      "git-graph.graph.colours": [
-          "#FF428E",
-          "#A8FFEF",
-          "#DFF959",
-          "#F7A409",
-          "#F834BB",
-          "#2BF5E9",
-          "#D831D7",
-          "#FF594C"
-      ],
-      "DockerRun.DisableAutoGenerateConfig": true,
-      "workbench.sideBar.location": "right",
-      "git.enableCommitSigning": true,
-      "redhat.telemetry.enabled": true,
-      "telemetry.telemetryLevel": "off"
-  }
+vsc_settings_overwrite: no
+vsc_keys_overwrite: no
+vsc_custom_config: $DOTFILES/.config/vscode/settings.json
+vsc_custom_keys: $DOTFILES/.config/vscode/keybindings.json
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
