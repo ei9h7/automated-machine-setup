@@ -1,5 +1,5 @@
 ---
-# Custom Terminal theme.
+# Synthwave Terminal theme.
 - name: Get current Terminal profile.
   command: defaults read com.apple.terminal 'Default Window Settings'
   register: terminal_theme
@@ -8,21 +8,20 @@
 
 - name: Ensure custom Terminal profile is added.
   copy:
-    src: files/terminal/JJG-Term.terminal
-    dest: /tmp/JJG-Term.terminal
+    src: files/terminal/synthwave.terminal
+    dest: /tmp/synthwave.terminal
   changed_when: false
-  when: "'JJG-Term' not in terminal_theme.stdout"
+  when: "'synthwave' not in terminal_theme.stdout"
 
 - name: Ensure custom Terminal profile is added.
-  command: open /tmp/JJG-Term.terminal
+  command: open /tmp/synthwave.terminal
   changed_when: false
-  when: "'JJG-Term' not in terminal_theme.stdout"
+  when: "'synthwave' not in terminal_theme.stdout"
 
-# TODO: This doesn't work in Yosemite. Consider a different solution?
 - name: Ensure custom Terminal profile is set as default.
   command: "{{ item }}"
   with_items:
-    - defaults write com.apple.terminal 'Default Window Settings' -string JJG-Term
-    - defaults write com.apple.terminal 'Startup Window Settings' -string JJG-Term
+    - defaults write com.apple.terminal 'Default Window Settings' -string synthwave
+    - defaults write com.apple.terminal 'Startup Window Settings' -string synthwave
   changed_when: false
-  when: "'JJG-Term' not in terminal_theme.stdout"
+  when: "'synthwave' not in terminal_theme.stdout"
