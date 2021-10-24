@@ -1,0 +1,40 @@
+---
+# Ensure zsh & bash are in allowed shells
+- name: Get the path to ZSH
+  become: false
+  local_action: command which zsh
+  register: zsh_path
+
+- name: Ensure zsh is in allowed shells
+  lineinfile:
+    path: /etc/shells
+    line: "{{ zsh_path.stdout }}"
+  become: true
+
+- name: Get the path to BASH
+  become: false
+  local_action: command which bash
+  register: bash_path
+
+- name: Ensure homebrew bash is in allowed shells
+  lineinfile:
+    path: /etc/shells
+    line: "{{ bash_path.stdout }}"
+  become: true
+
+# Set default shell  
+- name: Set ZSH as the default shell
+  shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
+  when: set_zsh
+  become: true
+
+- name: Set BASH as the default shell
+  shell: chsh -s $(which bash) {{ lookup('env', 'USER') }}
+  when: set_bash 
+  become: true
+
+# Use sudo once .macos-defaults can be run via root with no user interaction.
+- name: Run .linux-defaults dotfiles.
+  command: "{{ linux_script }}"
+  changed_when: false
+  become: true

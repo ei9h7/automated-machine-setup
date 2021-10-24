@@ -10,7 +10,17 @@
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
       tags: ['mas']
-    - include_vars: vars/homebrew.yml
+  
+    - name: Include laptop configuration
+      include_vars: laptop.config.yml
+      when: setup_laptop
+
+    - name: Include imac configuration
+      include_vars: imac.config.yml
+      when: setup_imac21
+
+    - name: Include homebrew vars
+      include_vars: vars/homebrew.yml
       when: configure_homebrew
       tags: ['homebrew']
 
@@ -34,6 +44,10 @@
     - import_tasks: tasks/osx.yml
       when: configure_osx
       tags: ['osx']
+
+    - import_tasks: tasks/linux.yml
+      when: configure_osx
+      tags: ['linux']
 
     - import_tasks: tasks/dock.yml
       when: configure_dock
