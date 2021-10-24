@@ -1,4 +1,4 @@
 ---
-setup_laptop: true
-setup_imac21: false
+setup_laptop: false
+setup_imac21: true
 setup_imac27: false
