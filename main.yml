@@ -3,7 +3,7 @@
 
   vars_files:
     - default.config.yml
-    - machines.yml
+    - vars/all.yml
 
   pre_tasks:
     - name: Include playbook secrets configuration.

@@ -1,0 +1,3 @@
+---
+
+view_encrypted_file_cmd: "ansible-vault view"
