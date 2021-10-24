@@ -17,7 +17,6 @@ dotfiles_files:
   - .bashrc
   - .gitignore
   - .gitmodules
-  - .gpg-yubikey
   - .hyper.js
   - .inputrc
   - .mackup.cfg
