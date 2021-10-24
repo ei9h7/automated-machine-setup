@@ -45,19 +45,11 @@ gem_packages:
 npm_packages: []
 pip_packages: []
 
-# Set to 'true' to configure apt packages
-configure_apt_packages: false
-apt_installed_packages: []
-apt_removed_packages: []
-# set yes to autoclean and autoremove 
-apt_autoclean: yes
-apt_autoremove: yes
-
 # configure yubikey
 configure_yubikey: true
 
 # Set to 'true' to configure Visual Studio Code
-configure_vsc: true
+configure_vsc: false
 vsc_extensions:
   - azblockchain.azure-blockchain
   - coenraads.bracket-pair-colorizer-2

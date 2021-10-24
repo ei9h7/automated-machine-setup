@@ -22,7 +22,7 @@
 
     - name: Include homebrew vars
       include_vars: vars/homebrew.yml
-      when: configure_homebrew
+      when: setup_imac21
       tags: ['homebrew']
 
   tasks:
