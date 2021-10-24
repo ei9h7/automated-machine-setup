@@ -8,7 +8,7 @@
   become: false
 
 - name: Decrypt git config template
-  local_action: "shell {{ view_encrypted_file_cmd }} {{ dotfiles_repo_local_destination }}/.config/git/config.enc > {{ dotfiles_repo_local_destination/.config/git/config"
+  local_action: "shell {{ view_encrypted_file_cmd }} {{ dotfiles_repo_local_destination }}/.config/git/config.enc > {{ dotfiles_repo_local_destination }}/.config/git/config"
   changed_when: False
 
 - name: Ensure unencrypted git config is ignored in gitignore
