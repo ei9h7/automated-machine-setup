@@ -19,7 +19,7 @@
 
 - name: Ensure git config directory exists
   file:
-    path: {{ dotfiles_repo_local_destination }}/.config/git
+    path: "{{ dotfiles_repo_local_destination }}/.config/git"
     state: directory
    
 #- name: Deploy template
