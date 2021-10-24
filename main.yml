@@ -9,19 +9,19 @@
       include_vars: "{{ item }}"
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
-      tags: ['user']
+      tags: ['mas']
     - include_vars: vars/homebrew.yml
       when: configure_homebrew
-      tags: ['homebrew','user']
+      tags: ['homebrew']
 
   tasks:
     - import_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
-      tags: ['dotfiles','user']
+      tags: ['dotfiles']
 
     - import_tasks: tasks/homebrew.yml
       when: configure_homebrew
-      tags: ['homebrew','user']
+      tags: ['homebrew']
 
     - import_tasks: tasks/mas.yml
       when: configure_macstore
@@ -29,30 +29,38 @@
 
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
-      tags: ['sudoers','user']
+      tags: ['sudoers']
 
     - import_tasks: tasks/osx.yml
       when: configure_osx
-      tags: ['osx','sudo']
+      tags: ['osx']
 
     - import_tasks: tasks/dock.yml
       when: configure_dock
-      tags: ['dock','user']
+      tags: ['dock']
 
     - import_tasks: tasks/terminal.yml
       when: configure_terminal
-      tags: ['terminal','user']
+      tags: ['terminal']
 
     - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages','user']
+      tags: ['extra-packages']
+    
+    - import_tasks: tasks/apt.yml
+      when: configure_apt
+      tags: ['apt-packages']
+
+    - import_tasks: tasks/yubikey.yml
+      when: configure_yubikey
+      tags: ['yubikey']
 
     - import_tasks: tasks/vscode.yml
       when: configure_vsc
-      tags: ['visual-studio-code','user']
+      tags: ['visual-studio-code']
 
     - name: Run configured post-provision ansible task files.
       include_tasks: "{{ outer_item }}"
       loop_control:
         loop_var: outer_item
       with_fileglob: "{{ post_provision_tasks|default(omit) }}"
-      tags: ['post','user']
+      tags: ['post']

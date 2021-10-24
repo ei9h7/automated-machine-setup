@@ -1,21 +1,23 @@
 ---
-downloads: /Users/{{ lookup('env', 'USER') }}/.ansible-downloads/
+downloads: $HOME/.ansible-downloads/
 
 configure_dotfiles: true
 dotfiles_repo: https://github.com/ei9h7/dotfiles.git
 dotfiles_repo_version: master
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: /Users/{{ lookup('env', 'USER') }}/projects/dotfiles
-dotfiles_home: /Users/{{ lookup('env', 'USER') }}
+dotfiles_repo_local_destination: "$HOME/projects/dotfiles"
+dotfiles_home: "$HOME"
 dotfiles_files:
   - .config/htop
   - .config/neofetch
   - .config/thefuck
+  - .gnupg/gpg-agent.conf
   - .iterm2
   - .bash_profile
   - .bashrc
   - .gitignore
   - .gitmodules
+  - .gpg-yubikey
   - .hyper.js
   - .inputrc
   - .mackup.cfg
@@ -27,15 +29,15 @@ dotfiles_files:
   - .zshrc
   - .zshenv
 
-configure_sudoers: false
-sudoers_custom_config: ''
+configure_sudoers: true
+sudoers_custom_config: '%admin ALL=(ALL) NOPASSWD: ALL'
 # Example:
 # sudoers_custom_config: |
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
 configure_osx: true
-osx_script: "/Users/{{ lookup('env', 'USER') }}/projects/dotfiles/.macos-defaults --no-restart"
+osx_script: "$DOTFILES/.macos-defaults --no-restart"
 # Set default shell (choose only one)
 set_zsh: false
 set_bash: true
@@ -166,6 +168,7 @@ homebrew_installed_packages:
   - p7zip
   - pam_yubico
   - perl@5.18
+  - pinentry-mac
   - rclone
   - rsync
   - rsync-time-backup
@@ -314,21 +317,22 @@ mas_signin_dialog: false
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
 composer_packages: []
-# - name: drush
-#   state: present # present/absent, default: present
-#   version: "^8.1" # default: N/A
 gem_packages:
   - name: colorls
-    state: present # present/absent/latest, default: present
-    #version: # default: N/A
+    state: latest
 npm_packages: []
-# - name: webpack
-#   state: present # present/absent/latest, default: present
-#   version: "^2.6" # default: N/A
 pip_packages: []
-# - name: mkdocs
-#   state: present # present/absent/latest, default: present
-#   version: "0.16.3" # default: N/A
+
+# Set to 'true' to configure apt packages
+configure_apt_packages: false
+apt_installed_packages: []
+apt_removed_packages: []
+# set yes to autoclean and autoremove 
+apt_autoclean: yes
+apt_autoremove: yes
+
+# configure yubikey
+configure_yubikey: true
 
 # Set to 'true' to configure Visual Studio Code
 configure_vsc: true

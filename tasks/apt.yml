@@ -1,0 +1,27 @@
+---
+# Install apt packages
+
+- name: Install apt packages
+  apt:
+    pkg:
+    - "{ item }"
+    state: latest
+    install_recommends: no
+    update_cache: yes
+    cache_valid_time: 3600
+    with_items: "{{ apt_installed_packages }}"
+
+- name: Remove apt packages
+  apt:
+    pkg:
+    - "{{ item }}"
+    state: absent
+    with_items: "{ apt_removed_packages }"
+
+- name: autoclean
+  apt:
+    autoclean: "{{ apt_autoclean}}"
+
+- name: autoremove
+  apt:
+    autoremove: "{{ apt_autoremove }}"
