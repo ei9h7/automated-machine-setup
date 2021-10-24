@@ -1,7 +1,7 @@
 ---
 # Add Homebrew ZSH to allowed shells
-- name: Ensure ZSH is installed.
-  homebrew: name=zsh state=present
+#- name: Ensure ZSH is installed.
+#  homebrew: name=zsh state=present
 
 - name: Get the path to ZSH
   become: false
@@ -15,8 +15,8 @@
   become: true
 
 # Add Homebrew BASH to allowed shells
-- name: Ensure BASH is installed.
-  homebrew: name=bash state=present
+#- name: Ensure BASH is installed.
+#  homebrew: name=bash state=present
 
 - name: Get the path to BASH
   become: false
