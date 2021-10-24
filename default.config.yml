@@ -10,6 +10,7 @@ dotfiles_home: "{{ lookup('env', 'HOME') }}"
 dotfiles_files:
   - .config/htop
   - .config/neofetch
+  - .config/git/config
   - .gnupg/gpg-agent.conf
   - .iterm2
   - .bash_profile
