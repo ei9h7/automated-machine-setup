@@ -13,23 +13,14 @@
     state: directory
 
 - name: Decrypt git config template
-  local_action: "shell {{ view_encrypted_file_cmd }} {{ dotfiles_repo_local_destination }}/.config/git/config.enc > {{ dotfiles_repo_local_destination }}/.config/git/config"
-  changed_when: False
+  local_action: "shell {{ view_encrypted_file_cmd }} {{ dotfiles_repo_local_destination }}/.config/git/config.enc > {{ dotfiles_repo_local_destination }}/.gitconfig"
+  changed_when: false
 
-- name: Ensure unencrypted git config is ignored in gitignore
+- name: Ensure unencrypted gitconfig is ignored in gitignore
   lineinfile:
     path: "{{ dotfiles_repo_local_destination }}/.gitignore"
-    line: ".config/git/config"
+    line: ".gitconfig"
   become: false
-   
-#- name: Deploy template
-#  template:
-#    src="{{ dotfiles_repo_local_destination }}/.config/git/config
-#    dest="{{ dotfiles_home }}/.config/git/config
-
-#- name: Remove decrypted templa  
-#  local_action: "file path={{ dotfiles_repo_local_destination }}/.config/git/config state=absent"
-#  changed_when: False
 
 - name: Ensure all configured dotfiles are links.
   command: "ls -F {{ dotfiles_home }}/{{ item }}"

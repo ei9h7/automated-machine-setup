@@ -10,7 +10,7 @@ dotfiles_repo_version: "master"
 dotfiles_files:
   - .config/htop
   - .config/neofetch
-  - .config/git/config
+  - .gitconfig
   - .gnupg/gpg-agent.conf
   - .iterm2
   - .bash_profile

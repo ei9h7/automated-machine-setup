@@ -13,7 +13,8 @@ dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/projects/dotfiles"
 dotfiles_home: "{{ lookup('env', 'HOME') }}"
 dotfiles_files:
   - .config/htop
-  - .config/git/config
+  - .config/neofetch
+  - .gitconfig
   - .gnupg/gpg-agent.conf
   - .bash_profile
   - .bashrc
