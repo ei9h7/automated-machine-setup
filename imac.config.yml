@@ -50,6 +50,17 @@ homebrew_cask_accept_external_apps: true
 homebrew_use_brewfile: false
 homebrew_brewfile_dir: "$DOTFILES"
 homebrew_clear_cache: false
+homebrew_taps:
+  - homebrew/bundle
+  - homebrew/cask
+  - homebrew/cask-drivers
+  - homebrew/cask-fonts
+  - homebrew/cask-versions
+  - homebrew/command-not-found
+  - homebrew/core
+  - homebrew/services
+  - mas-cli/tap
+  - nrlquaker/createzap
 homebrew_installed_packages:
   - autoconf
   - automake
@@ -84,6 +95,7 @@ homebrew_installed_packages:
   - libyubikey
   - luarocks
   - m4
+  - mas-cli/tap/mas
   - micro
   - node
   - nyancat
@@ -111,17 +123,6 @@ homebrew_installed_packages:
   - zsh-git-prompt
   - zsh-lovers
 homebrew_uninstalled_packages: []
-homebrew_taps:
-  - homebrew/bundle
-  - homebrew/cask
-  - homebrew/cask-drivers
-  - homebrew/cask-fonts
-  - homebrew/cask-versions
-  - homebrew/command-not-found
-  - homebrew/core
-  - homebrew/services
-  - mas-cli/tap
-  - nrlquaker/createzap
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - 1clipboard
@@ -149,6 +150,7 @@ homebrew_cask_apps:
   - google-drive-file-stream
   - gpg-suite-no-mail
   - icanhazshortcut
+  - iterm2
   - jetbrains-toolbox
   - keka
   - kekaexternalhelper
@@ -179,7 +181,6 @@ homebrew_cask_apps:
   - spotify
   - spotify-now-playing
   - steam
-  - therm
   - the-unarchiver
   - tunnelblick
   - unetbootin
