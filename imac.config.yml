@@ -1,23 +1,56 @@
 ---
+# Configuration for macOS iMac
+
+# Ansible Vault Secrets File
+secrets_vault: "secrets.yml"
+
+# Configure dotfiles for this system
+configure_dotfiles: true
+dotfiles_repo_version: "master"
+dotfiles_files:
+  - .config/htop
+  - .config/neofetch
+  - .config/git/config
+  - .gnupg/gpg-agent.conf
+  - .iterm2
+  - .bash_profile
+  - .bashrc
+  - .gitignore
+  - .gitmodules
+  - .hyper.js
+  - .inputrc
+  - .mackup.cfg
+  - .nanorc
+  - .profile
+  - .screenrc
+  - .tmux.conf
+  - .vimrc
+  - .zshrc
+  - .zshenv
+
+# Edit sudoers file with visudo
+configure_sudoers: true
+sudoers_custom_config: |
+  Allow users in admin group to use sudo with no password.
+  %admin ALL=(ALL) NOPASSWD: ALL
+
+# Customize OS    
 configure_osx: true
 osx_script: "{{ lookup('env', 'DOTFILES') }}/.macos-defaults --no-restart"
+
 # Set default shell (choose only one)
 set_zsh: false
 set_bash: true
 
 configure_homebrew: true
-homebrew_repo: https://github.com/Homebrew/brew
+homebrew_repo: "https://github.com/Homebrew/brew"
 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
-homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
-homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
 homebrew_upgrade_all_packages: false
-homebrew_cask_accept_external_apps: false
+homebrew_cask_accept_external_apps: true
 homebrew_use_brewfile: false
 homebrew_brewfile_dir: "$DOTFILES"
 homebrew_clear_cache: false
-homebrew_folders_additional: []
 homebrew_installed_packages:
-# - ansible # Installed via Pip.
   - autoconf
   - automake
   - bash
@@ -26,6 +59,7 @@ homebrew_installed_packages:
   - bash-snippets
   - ca-certificates
   - ccat
+# for macOS that can't run docker desktop
 # - docker
 # - docker-completion
 # - docker-compose
@@ -238,12 +272,11 @@ dockitems_persist:
     path: "/Applications/NVIDIA GeForce NOW.app/"
     pos: 18
 
+# Set 'true' to configure Apple App Store
 configure_macstore: true
-mas_installed_app_ids: []  # Deprecated
 mas_installed_apps:
   - { id: 937984704, name: "Amphetamine" }
   - { id: 1236045954, name: "Canary Mail" }
-#  - { id: 696977615, name: "Capo" }
   - { id: 484889220, name: "Cryptext" }
   - { id: 1012138285, name: "Crypto-Maker" }
   - { id: 425264550, name: "Disk Speed Test" }
@@ -271,7 +304,53 @@ mas_installed_apps:
 # - { id: 497799835, name: "Xcode" }
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
-# mas_email: ""
-# mas_password: "" # in config.yml which is gitignored
-mas_upgrade_all_apps: false
-mas_signin_dialog: false
+mas_upgrade_all_apps: true
+
+# Install packages from other package managers.
+composer_packages: []
+
+gem_packages:
+  - name: colorls
+    state: latest
+
+npm_packages: []
+
+pip_packages: []
+
+# configure yubikey
+configure_yubikey: true
+
+# Set to 'true' to configure Visual Studio Code
+configure_vsc: true
+vsc_extensions:
+  - azblockchain.azure-blockchain
+  - coenraads.bracket-pair-colorizer-2
+  - aaronyoung.dark-synthwave-vscode
+  - ms-azuretools.vscode-docker
+  - formulahendry.docker-explorer
+  - quentingruber.dockerfiletemplate
+  - tqrhsn.vscode-docker-registry-explorer
+  - george3447.docker-run
+  - dotiful.dotfiles-syntax-highlighting
+  - blake-mealey.generate-wt-scheme
+  - mhutchie.git-graph
+  - github.codespaces
+  - github.vscode-pull-request-github
+  - ntc.integrated-terminal-tasks
+  - hoovercj.vscode-power-mode
+  - stuyk.powermodesounds
+  - ms-python.python
+  - dhedgecock.radical-vscode
+  - ms-vscode-remote.remote-containers
+  - ms-vscode-remote.remote-ssh
+  - ms-vscode-remote.remote-ssh-edit
+  - ms-vscode-remote.remote-wsl
+  - ms-vscode-remote.vscode-remote-extensionpack
+  - juanblanco.solidity
+  - robbowen.synthwave-vscode
+  - visualstudioexptteam.vscodeintellicode
+  - dunstontc.vscode-docker-syntax
+  - redhat.vscode-yaml
+  - ms-vscode.powershell
+vsc_settings_overwrite: yes
+vsc_keys_overwrite: no

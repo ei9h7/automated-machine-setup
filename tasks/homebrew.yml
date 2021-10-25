@@ -1,4 +1,7 @@
 ---
+- name: Include homebrew vars
+  include_vars: vars/homebrew.yml
+
 - name: Determine Homebrew ownership variables
   set_fact:
     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'

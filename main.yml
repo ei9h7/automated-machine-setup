@@ -7,16 +7,11 @@
 
   pre_tasks:
     - name: Include playbook secrets configuration.
-      include_vars: config.yml
+      include_vars: secrets.yml
   
     - name: Include iMac configuration
       include_vars: imac.config.yml
     
-    - name: Include homebrew vars
-      include_vars: vars/homebrew.yml
-      when: configure_homebrew
-      tags: ['homebrew']
-
   tasks:
     - import_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
@@ -28,7 +23,7 @@
 
     - import_tasks: tasks/mas.yml
       when: configure_macstore
-      tags: ['mas','user']
+      tags: ['mas']
 
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers

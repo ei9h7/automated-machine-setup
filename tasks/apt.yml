@@ -7,8 +7,8 @@
     - "{ item }"
     state: latest
     install_recommends: no
-    update_cache: yes
-    cache_valid_time: 3600
+    update_cache: "{{ apt_update_cache }}"
+    cache_valid_time: "{{ apt_cache_time }}" 
     with_items: "{{ apt_installed_packages }}"
 
 - name: Remove apt packages
