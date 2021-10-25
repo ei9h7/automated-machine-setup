@@ -11,6 +11,9 @@
   
     - name: Include iMac configuration
       include_vars: imac.config.yml
+
+  # - name: Include linux configuration
+  #   include_vars: laptop.config.yml        
     
   tasks:
     - import_tasks: tasks/dotfiles.yml
