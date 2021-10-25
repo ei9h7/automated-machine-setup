@@ -76,9 +76,14 @@ homebrew_cask_uninstalled_apps: []
 
 # Set 'true' to configure apt packages
 configure_apt: false
-apt_installed_packages: []
+apt_installed_packages:
   # Example:
   # - ansible
+    - build-essential
+    - procps
+    - curl
+    - file
+    - git
 apt_removed_packages: []
 apt_update_cache: true
 apt_cache_time: 3600

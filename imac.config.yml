@@ -30,8 +30,9 @@ dotfiles_files:
 
 # Edit sudoers file with visudo
 configure_sudoers: true
+sudoers_folder: "/private/etc/sudoers.d"
 sudoers_custom_config: |
-  Allow users in admin group to use sudo with no password.
+  #Allow users in admin group to use sudo with no password.
   %admin ALL=(ALL) NOPASSWD: ALL
 
 # Customize OS    
@@ -97,6 +98,7 @@ homebrew_installed_packages:
   - m4
   - mas-cli/tap/mas
   - micro
+  - neofetch
   - node
   - nyancat
   - openjdk
