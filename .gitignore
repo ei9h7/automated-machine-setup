@@ -7,3 +7,4 @@ roles*
 *.swp
 .gitconfig
 .gnupg
+/.dotfiles-backup

@@ -7,14 +7,14 @@
 ##################################################
 
 # to use my default settings:
-# sudo curl -Lks https://github.io/ei9h7/automated-machine-install/bootstrap-linux.sh | bin/bash
+# sudo curl -Lks https://github.io/ei9h7/automated-machine-setup/bootstrap-linux | bin/bash
 
 # ensure Python3 is in path
 export PATH="/usr/bin/python3:$PATH"
 
 # update and upgrade apt and install dependencies
-sudo apt-get update && apt-get dist-upgrade -y
-sudo apt-get install -y git
+sudo apt-get update
+sudo apt-get install -y git python3.8 python3-pip
 
 # upgrade pip and install ansible
 sudo pip3 install --upgrade pip
@@ -23,7 +23,7 @@ pip3 install --ignore-installed ansible
 # clone project repo to local machine
 [ -d "$HOME/projects" ] || mkdir -p $HOME/projects
 cd $HOME/projects
-git clone https://github.com/ei9h7/automated-machine-setup.git
+git clone -b netbook https://github.com/ei9h7/automated-machine-setup.git
 git clone https://github.com/ei9h7/dotfiles.git
 cd automated-machine-setup
 
