@@ -57,13 +57,17 @@ homebrew_use_brewfile: false
 homebrew_brewfile_dir: "$DOTFILES"
 homebrew_clear_cache: false
 homebrew_folders_additional: []
-homebrew_installed_packages: []
+homebrew_installed_packages:
   # Example:
   # - ansible # Installed via Pip.
   # - { name: yubikey-agent, install_options: "restart_service: true" }
+    - brew/bundle
+    - font-victor-mono-nerd-font
+    - font-jetbrains-mono-nerd-font
+    - whalebrew
 homebrew_uninstalled_packages: []
-homebrew_taps: []
-# not for linux?? # homebrew_cask_appdir: "/usr/local/bin"
+homebrew_taps:
+    - homebrew/cask-fonts
 homebrew_cask_apps: []
 homebrew_cask_uninstalled_apps: []
 
