@@ -8,3 +8,4 @@ roles*
 .gitconfig
 .gnupg
 /.dotfiles-backup
+/.config/git/config.enc.bak

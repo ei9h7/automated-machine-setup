@@ -34,6 +34,6 @@ ansible-galaxy install -r requirements.yml
 # ansible-vault encrypt secrets.yml
 
 # encrypt local .gitconfig file
-[ -f "$HOME/.gitconfig" ] && { cp "$HOME/.gitconfig" "$HOME/projects/dotfiles/.config/git/config.enc" && ansible-vault encrypt "$HOME/projects/dotfiles/.config/git/config.enc" ;}
+[ -f "$HOME/.gitconfig" ] && { cp "$HOME/.gitconfig" "$HOME/projects/dotfiles/.config/git/config.enc.bak" && ansible-vault encrypt "$HOME/projects/dotfiles/.config/git/config.enc.bak" ;}
 
 ansible-playbook main.yml -K --ask-vault-password
