@@ -53,21 +53,13 @@ homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
 homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
 homebrew_upgrade_all_packages: false
 homebrew_cask_accept_external_apps: true
-homebrew_use_brewfile: false
-homebrew_brewfile_dir: "$DOTFILES"
+homebrew_use_brewfile: true
+homebrew_brewfile_dir: "$HOME/projects/automated-machine-setup/files/brew"
 homebrew_clear_cache: false
 homebrew_folders_additional: []
-homebrew_installed_packages:
-  # Example:
-  # - ansible # Installed via Pip.
-  # - { name: yubikey-agent, install_options: "restart_service: true" }
-    - brew/bundle
-    - font-victor-mono-nerd-font
-    - font-jetbrains-mono-nerd-font
-    - whalebrew
+homebrew_installed_packages: []
 homebrew_uninstalled_packages: []
-homebrew_taps:
-    - homebrew/cask-fonts
+homebrew_taps: []
 homebrew_cask_apps: []
 homebrew_cask_uninstalled_apps: []
 

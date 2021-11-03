@@ -20,7 +20,7 @@
   file:
     path: "{{ homebrew_prefix }}"
     owner: root
-    group: admin
+    group: sudo
     state: directory
     mode: 0775
   become: true

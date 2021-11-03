@@ -1,0 +1,16 @@
+# taps
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/cask-fonts"
+
+# formula
+brew "cowsay"
+brew "gcc"
+brew "font-victor-mono-nerd-font"
+brew "font-jetbrains-mono-nerd-font"
+brew "whalebrew"
+
+# casks
+
+# whalebrew
+whalebrew "3i9h7/docker-pyrit"
