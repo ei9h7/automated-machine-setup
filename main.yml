@@ -8,10 +8,10 @@
   pre_tasks:
     - name: Include playbook secrets configuration.
       include_vars: secrets.yml
-  
+
     - name: Include netbook configuration
-      include_vars: config.yml        
-    
+      include_vars: config.yml
+
   tasks:
     - import_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
@@ -39,7 +39,7 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-    
+
     - import_tasks: tasks/yubikey.yml
       when: configure_yubikey
       tags: ['yubikey']

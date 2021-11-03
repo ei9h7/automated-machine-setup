@@ -63,14 +63,14 @@ homebrew_installed_packages: []
   # - { name: yubikey-agent, install_options: "restart_service: true" }
 homebrew_uninstalled_packages: []
 homebrew_taps: []
-homebrew_cask_appdir: "/usr/local/bin"
+# not for linux?? # homebrew_cask_appdir: "/usr/local/bin"
 homebrew_cask_apps: []
 homebrew_cask_uninstalled_apps: []
 
 # Set 'true' to configure apt packages
 configure_apt: true
 apt_installed_packages:
-    - ansible
+  # - ansible
     - build-essential
     - procps
     - curl
@@ -87,11 +87,13 @@ apt_autoremove: false
 # Install packages from other package managers.
 # Note: Make sure the required package managers are installed.
 composer_packages: []
-gem_packages: []
+gem_packages:
   - name: colorls
     state: latest
 npm_packages: []
-pip_packages: []
+pip_packages:
+  - name: thefuck
+  - state: latest
 
 # configure yubikey
 configure_yubikey: true
