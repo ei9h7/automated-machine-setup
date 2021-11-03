@@ -9,11 +9,8 @@
     - name: Include playbook secrets configuration.
       include_vars: secrets.yml
   
-    - name: Include iMac configuration
-      include_vars: imac.config.yml
-
-  # - name: Include linux configuration
-  #   include_vars: laptop.config.yml        
+    - name: Include netbook configuration
+      include_vars: config.yml        
     
   tasks:
     - import_tasks: tasks/dotfiles.yml
@@ -24,21 +21,17 @@
       when: configure_homebrew
       tags: ['homebrew']
 
-    - import_tasks: tasks/mas.yml
-      when: configure_macstore
-      tags: ['mas']
+    - import_tasks: tasks/apt.yml
+      when: configure_apt
+      tags: ['apt']
 
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
       tags: ['sudoers']
 
-    - import_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
-
-    - import_tasks: tasks/dock.yml
-      when: configure_dock
-      tags: ['dock']
+    - import_tasks: tasks/linux.yml
+      when: configure_linux
+      tags: ['linux']
 
     - import_tasks: tasks/terminal.yml
       when: configure_terminal
