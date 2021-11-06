@@ -23,12 +23,11 @@ cd $HOME/projects
 cd automated-machine-setup
 
 # backup existing dotfiles before running machine setup
-mkdir -p "$HOME/projects/dotfiles/.dotfiles-backup" && cd "$HOME/projects/dotfiles/.dotfiles-backup"
-git init --git-dir="$HOME/projects/dotfiles/.dotfiles-backup" --work-tree="$HOME" && git checkout
-[ $? = 0 ] || echo "Backing up pre-existing dot files." && git --git-dir="$HOME/projects/dotfiles/.dotfiles-backup" --work-tree="$HOME" checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} cp {} "$HOME/projects/dotfiles/.dotfiles-backup/{}"
+mkdir -p "$HOME/projects/dotfiles/.dotfiles-backup" && cd "$HOME"
+echo "Backing up pre-existing dot files." && egrep "\s+\." | awk {'print $1'} | xargs -I{} cp {} "$HOME/projects/dotfiles/.dotfiles-backup/{}"
 
 # ansible install requirements
-ansible-galaxy install -r requirements.yml
+# ansible-galaxy install -r requirements.yml
 
 # encrypt your own secrets.yml file
 # ansible-vault encrypt secrets.yml
@@ -36,4 +35,4 @@ ansible-galaxy install -r requirements.yml
 # encrypt local .gitconfig file
 [ -f "$HOME/.gitconfig" ] && { cp "$HOME/.gitconfig" "$HOME/projects/dotfiles/.config/git/config.enc.bak" && ansible-vault encrypt "$HOME/projects/dotfiles/.config/git/config.enc.bak" ;}
 
-ansible-playbook main.yml -K --ask-vault-password
+ansible-playbook main.yml -K --ask-vault-pass
