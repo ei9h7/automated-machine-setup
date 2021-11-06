@@ -18,16 +18,16 @@ sudo apt-get install -y ansible
 # clone project repo to local machine
 [ -d "$HOME/projects" ] || mkdir -p $HOME/projects
 cd $HOME/projects
-git clone -b netbook https://github.com/ei9h7/automated-machine-setup.git
-git clone https://github.com/ei9h7/dotfiles.git
+[ -d "$HOME/projects/automated-machine-setup" ] && git pull -f || git clone -b netbook https://github.com/ei9h7/automated-machine-setup.git
+[ -d "$HOME/projects/dotfiles" ] && git pull -f || git clone https://github.com/ei9h7/dotfiles.git
 cd automated-machine-setup
 
 # backup existing dotfiles before running machine setup
-mkdir -p .dotfiles-backup 
-git --git-dir="$HOME/projects/dotfiles/" --work-tree="$HOME" checkout
-[ $? = 0 ] || echo "Backing up pre-existing dot files." && git --git-dir="$HOME/projects/dotfiles/" --work-tree="$HOME" checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} cp {} "$HOME/projects/automated-machine-setup/.dotfiles-backup/{}"
+mkdir -p "$HOME/projects/dotfiles/.dotfiles-backup" && cd "$HOME/projects/dotfiles/.dotfiles-backup"
+git init --git-dir="$HOME/projects/dotfiles/.dotfiles-backup" --work-tree="$HOME" && git checkout
+[ $? = 0 ] || echo "Backing up pre-existing dot files." && git --git-dir="$HOME/projects/dotfiles/.dotfiles-backup" --work-tree="$HOME" checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} cp {} "$HOME/projects/dotfiles/.dotfiles-backup/{}"
 
-# ansible install requirements 
+# ansible install requirements
 ansible-galaxy install -r requirements.yml
 
 # encrypt your own secrets.yml file
