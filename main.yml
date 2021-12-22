@@ -2,18 +2,12 @@
 - hosts: all
 
   vars_files:
-    - default.config.yml
+    - macbookpro.yml # Include macbookpro9,1 configuration
     - vars/all.yml
 
   pre_tasks:
-    - name: Include playbook secrets configuration.
-      include_vars: secrets.yml
-  
-    - name: Include iMac configuration
-      include_vars: imac.config.yml
-
-  # - name: Include linux configuration
-  #   include_vars: laptop.config.yml        
+#   - name: Include playbook secrets configuration.
+#     include_vars: secrets.yml     
     
   tasks:
     - import_tasks: tasks/dotfiles.yml
@@ -61,3 +55,13 @@
         loop_var: outer_item
       with_fileglob: "{{ post_provision_tasks|default(omit) }}"
       tags: ['post']
+
+  handlers:
+    # handler for homebrew
+    - name: Clear homebrew cache
+      file:
+        path: "{{ homebrew_cache_path.stdout | trim }}"
+        state: absent
+      when: 'homebrew_clear_cache | bool'
+      become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+      become_user: "{{ homebrew_user }}"

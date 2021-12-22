@@ -1,12 +1,12 @@
 #!/bin/sh
-#xcode-select --install
-#sudo xcodebuild -license
-#export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"
-#sudo pip3 install --upgrade pip
-#pip3 install --ignore-installed ansible
-#mkdir -p ~/projects && cd ~/projects
-#git clone https://github.com/ei9h7/automated-mac-setup.git
-#cd automated-mac-setup
+xcode-select --install
+sudo xcodebuild -license
+/usr/sbin/softwareupdate --install-rosetta
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
+sudo pip3 install --ignore-installed ansible
 ansible-galaxy install -r requirements.yml
+chmod +x update
+
 ansible-playbook main.yml --ask-vault-pass -K --skip-tags "osx"
 sudo ansible-playbook main.yml -K -t "osx"

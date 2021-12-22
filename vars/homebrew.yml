@@ -13,4 +13,4 @@ homebrew_folders_base:
   - share
   - share/zsh
   - share/zsh/site-functions
-  - var
+  - var 

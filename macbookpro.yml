@@ -1,4 +1,6 @@
 ---
+downloads: "{{ lookup('env', 'HOME') }}/.ansible-downloads/"
+
 # Configuration for macOS iMac
 
 # Ansible Vault Secrets File
@@ -6,12 +8,16 @@ secrets_vault: "secrets.yml"
 
 # Configure dotfiles for this system
 configure_dotfiles: true
+dotfiles_repo: "https://github.com/ei9h7/dotfiles.git"
 dotfiles_repo_version: "master"
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/projects/dotfiles"
+dotfiles_home: "{{ lookup('env', 'HOME') }}"
 dotfiles_files:
   - .config/htop
   - .config/neofetch
   - .gitconfig
-  - .gnupg/gpg-agent.conf
+# - .gnupg/gpg-agent.conf
   - .iterm2
   - .bash_profile
   - .bashrc
@@ -43,14 +49,19 @@ osx_script: "{{ lookup('env', 'DOTFILES') }}/.macos-defaults --no-restart"
 set_zsh: false
 set_bash: true
 
+# Set 'true' to configure homebrew packages 
 configure_homebrew: true
 homebrew_repo: "https://github.com/Homebrew/brew"
 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
+homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
+homebrew_cache_path: "{{ homebrew_brew_bin_path }}/brew --cache"
 homebrew_upgrade_all_packages: false
 homebrew_cask_accept_external_apps: true
 homebrew_use_brewfile: false
 homebrew_brewfile_dir: "$DOTFILES"
 homebrew_clear_cache: false
+homebrew_folders_additional: []
 homebrew_taps:
   - homebrew/bundle
   - homebrew/cask
@@ -79,6 +90,7 @@ homebrew_installed_packages:
 # - docker-machine
 # - docker-machine-parallels
 # - docker-toolbox
+  - dockutil
   - e2fsprogs
   - ethereum
   - fortune
@@ -104,7 +116,7 @@ homebrew_installed_packages:
   - openjdk
   - p7zip
   - pam_yubico
-  - perl@5.18
+# - perl@5.18
   - pinentry-mac
   - rclone
   - rsync
@@ -120,15 +132,15 @@ homebrew_installed_packages:
   - x11vnc
   - ykpers
   - yubico-piv-tool
-  - { name: yubikey-agent, install_options: "restart_service: true" }
-  - zsh
+  - yubikey-agent
+# - zsh
   - zsh-git-prompt
   - zsh-lovers
 homebrew_uninstalled_packages: []
-homebrew_cask_appdir: /Applications
+homebrew_cask_appdir: "/Applications"
 homebrew_cask_apps:
   - 1clipboard
-  - amazon-music
+# - amazon-music
   - angry-ip-scanner
   - appcleaner
   - atom
@@ -136,7 +148,9 @@ homebrew_cask_apps:
   - backuploupe
   - battle-net
   - boxcryptor
-  - carbon-copy-cloner5
+  - carbon-copy-cloner
+# For macOS that doesnt support vers. 6   
+# - carbon-copy-cloner5   
   - command-pad
   - docker
   - duplicati
@@ -162,6 +176,7 @@ homebrew_cask_apps:
   - macs-fan-control
   - macvim
   - mdrp
+  - meld
   - microsoft-auto-update
   - microsoft-office
   - multipass
@@ -181,7 +196,7 @@ homebrew_cask_apps:
   - pycharm-edu
   - raspberry-pi-imager
   - spotify
-  - spotify-now-playing
+# - spotify-now-playing
   - steam
   - the-unarchiver
   - tunnelblick
@@ -190,16 +205,19 @@ homebrew_cask_apps:
   - unity-hub
   - vagrant
   - virtualbox
-  - visual-studio
+  - virtualbox-extension-pack
+# - visual-studio
   - visual-studio-code
   - vlc
-  - vnc-viewer
+# - vnc-viewer
   - wireshark
   - yubico-authenticator
   - yubico-yubikey-manager
   - yubico-yubikey-personalization-gui
   - yubico-yubikey-piv-manager
 homebrew_cask_uninstalled_apps: []
+homebrew_enabled_services:
+  - yubikey-agent
 
 # Set to 'true' to configure the terminal theme etc
 configure_terminal: true
@@ -207,18 +225,21 @@ configure_terminal: true
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: true
 dockitems_remove:
-  - Launchpad
+# - Launchpad
   - 'App Store'
   - Mail
   - Contacts
-  - Calendar
   - Maps
   - Photos
-  - Messages
+# - Messages
   - Facetime
   - News
-  - iTunes
-  - 'System Preferences'
+  - Books
+  - Podcasts
+  - Music
+  - TV
+# - iTunes
+# - 'System Preferences'
 dockitems_persist:
   - name: "AppCleaner"
     path: "/Applications/AppCleaner.app/"
@@ -226,9 +247,6 @@ dockitems_persist:
   - name: "Atom"
     path: "/Applications/Atom.app/"
     pos: 2
-  - name: "Calculator"
-    path: "/Applications/Calculator.app/"
-    pos: 3
   - name: "Canary Mail"
     path: "/Applications/Canary Mail.app/"
     pos: 4
@@ -262,21 +280,19 @@ dockitems_persist:
   - name: "PyCharm Edu"
     path: "/Applications/PyCharm Edu.app/"
     pos: 14
-  - name: "Stickies"
-    path: "/Applications/Stickies.app/"
+  - name: "Terminal"
+    path: "/Applications/Utilities/Terminal.app/"
     pos: 15
-  - name: "Therm"
-    path: "/Applications/Therm.app/"
+  - name: "iTerm"
+    path: "/Applications/iTerm.app/"
     pos: 16
   - name: "Visual Studio Code"
     path: "/Applications/Visual Studio Code.app/"
     pos: 17
-  - name: "NVIDIA GeForce NOW"
-    path: "/Applications/NVIDIA GeForce NOW.app/"
-    pos: 18
 
 # Set 'true' to configure Apple App Store
 configure_macstore: true
+mas_installed_app_ids: [] # deprecated
 mas_installed_apps:
   - { id: 937984704, name: "Amphetamine" }
   - { id: 1236045954, name: "Canary Mail" }
@@ -300,7 +316,7 @@ mas_installed_apps:
   - { id: 1099475282, name: "SnailGit Lite" }
   - { id: 707452888, name: "Spike Email" }
   - { id: 1452212620, name: "StartUp" }
-# - { id: 1496833156, name: "Swift Playgrounds" }
+  - { id: 1496833156, name: "Swift Playgrounds" }
   - { id: 1102494854, name: "System Designer" }
   - { id: 571654652, name: "Toolbox for Pages" }
   - { id: 1480933944, name: "Vimari" }
@@ -308,6 +324,8 @@ mas_installed_apps:
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
 mas_upgrade_all_apps: true
+mas_email: "eight0n@me.com"
+mas_signin_dialog: true
 
 # Install packages from other package managers.
 composer_packages: []
@@ -357,3 +375,6 @@ vsc_extensions:
   - ms-vscode.powershell
 vsc_settings_overwrite: yes
 vsc_keys_overwrite: no
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
