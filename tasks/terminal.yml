@@ -25,3 +25,15 @@
     - defaults write com.apple.terminal 'Startup Window Settings' -string synthwave
   changed_when: false
   when: "'synthwave' not in terminal_theme.stdout"
+
+- name: create Terminal Themes directory
+  file: 
+    path: "~/projects/Terminal-Color-Schemes"
+    state: directory
+
+- name: clone Terminal Themes to project directory
+  git:
+    repo: https://github.com/ei9h7/Terminal-Color-Schemes
+    dest: "{{ lookup('env', 'HOME') }}/projects/Terminal-Color-Schemes"
+    accept_hostkey: yes
+    recursive: yes
