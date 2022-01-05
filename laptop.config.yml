@@ -52,7 +52,6 @@ homebrew_prefix: "/home/linuxbrew/.linuxbrew"
 homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
 homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
 homebrew_upgrade_all_packages: false
-homebrew_cask_accept_external_apps: false
 homebrew_use_brewfile: false
 homebrew_brewfile_dir: "$DOTFILES"
 homebrew_clear_cache: false
@@ -63,9 +62,6 @@ homebrew_installed_packages: []
   # - { name: yubikey-agent, install_options: "restart_service: true" }
 homebrew_uninstalled_packages: []
 homebrew_taps: []
-homebrew_cask_appdir: "/Applications"
-homebrew_cask_apps: []
-homebrew_cask_uninstalled_apps: []
 
 # Set 'true' to configure apt packages
 configure_apt: true
@@ -83,10 +79,13 @@ apt_cache_time: 3600
 apt_autoclean: true
 apt_autoremove: false
 
+# Set to 'true' to configure the terminal theme etc
+configure_terminal: false
+
 # Install packages from other package managers.
 # Note: Make sure the required package managers are installed.
 composer_packages: []
-gem_packages: []
+gem_packages:
   - name: colorls
     state: latest
 npm_packages: []
@@ -129,3 +128,8 @@ vsc_extensions:
   - ms-vscode.powershell
 vsc_settings_overwrite: no
 vsc_keys_overwrite: no
+vsc_custom_config: "$DOTFILES/.config/vscode/settings.json"
+vsc_custom_keys: "$DOTFILES/.config/vscode/keybindings.json"
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
