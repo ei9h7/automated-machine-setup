@@ -12,6 +12,10 @@
       include_vars: secrets.yml  
     
   tasks:
+    - import_tasks: tasks/yubikey.yml
+      when: configure_yubikey
+      tags: ['yubikey']
+  
     - import_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
       tags: ['dotfiles']
@@ -38,10 +42,6 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-    
-    - import_tasks: tasks/yubikey.yml
-      when: configure_yubikey
-      tags: ['yubikey']
 
     - import_tasks: tasks/vscode.yml
       when: configure_vsc
