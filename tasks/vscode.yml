@@ -1,11 +1,4 @@
 ---  
-
-- name: Create symlink for vscodium to 'Code'.
-  file:
-    src: "{{ lookup('env', 'HOME') }}/.config/Code"
-    dest: "{{ lookup('env', 'HOME') }}/.config/VSCodium"
-    state: link
-    
 - name: Ensure VSCodium is installed.
   become: true
   apt: 
