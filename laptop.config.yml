@@ -110,6 +110,7 @@ vsc_extensions:
   - mhutchie.git-graph
   - github.codespaces
   - github.vscode-pull-request-github
+  - eamodio.gitlens
   - ntc.integrated-terminal-tasks
   - hoovercj.vscode-power-mode
   - stuyk.powermodesounds

@@ -1,25 +1,35 @@
----
-# TODO: Create OS specific config    
+---  
 
-- name: Ensure VSCode is installed.
-  homebrew: 
-    name: visual-studio-code 
-    state: present
-
-- name: Create a default VSCode configuration (macOS)
+- name: Create symlink for vscodium to 'Code'.
+  file:
+    src: ""{{ lookup('env', 'HOME') }}/.config/Code"
+    dest: ""{{ lookup('env', 'HOME') }}/.config/VSCode"
+    state: link
+    become: false
+    
+- name: Ensure VSCodium is installed.
+  become: true
+  apt: 
+    pkg: vscodium 
+    state: latest
+    install_recommends: no
+    update_cache: "{{ apt_update_cache }}"
+    cache_valid_time: "{{ apt_cache_time }}" 
+    
+- name: Create a default VSCode configuration (linux)
   copy:
     src: "{{ vsc_custom_config }}"
-    dest: "{{ lookup('env', 'HOME') }}/Library/Application Support/Code/User/settings.json"
+    dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/settings.json"
     owner: "{{ lookup('env', 'USER') }}"
     force: "{{ vsc_settings_overwrite }}"
 
-- name: Create a default VSCode keybinding configuration (macOS)
+- name: Create a default VSCode keybinding configuration (linux)
   copy:
     src: "{{ vsc_custom_keys }}"
-    dest: "{{ lookup('env', 'HOME') }}/Library/Application Support/Code/User/keybindings.json"
+    dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/keybindings.json"
     owner: "{{ lookup('env', 'USER') }}"
     force: "{{ vsc_keys_overwrite }}"
-
+        
 - name: Install VSCode extensions
   shell: "code --install-extension {{ item }}"
   with_items: "{{ vsc_extensions }}"
