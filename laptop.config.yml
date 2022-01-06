@@ -130,14 +130,15 @@ apt_autoremove: false
 
 # Set 'true' to configure apt packages
 configure_snap: true
-snap_installed_packages:
+snap_installed_packages_classic:
   - gitkraken --classic
   - intellij-idea-community --classic
+  - powershell --classic
+  - pycharm-educational --classic
+snap_installed_packages:
   - multipass
   - nordpass
   - nordvpn-electron
-  - powershell --classic
-  - pycharm-educational --classic
 snap_removed_packages: []
 
 # Set to 'true' to configure the terminal theme etc

@@ -35,6 +35,10 @@
     - import_tasks: tasks/apt.yml
       when: configure_apt
       tags: ['apt']
+      
+    - import_tasks: tasks/snap.yml
+      when: configure_snap
+      tags: ['snap']
 
     - import_tasks: tasks/terminal.yml
       when: configure_terminal

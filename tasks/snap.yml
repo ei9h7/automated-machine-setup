@@ -1,0 +1,21 @@
+---
+# Install snap packages
+
+- name: Install classic snap packages
+  become: true
+  snap:
+    name: "{{ snap_installed_packages_classic }}"
+    state: present
+    classic: yes
+    
+- name: Install snap packages
+  become: true
+  snap:
+    name: "{{ snap_installed_packages }}"
+    state: present
+    
+- name: Remove snap packages
+  become: true
+  snap:
+    name: "{{ snap_removed_packages }}"
+    state: absent
