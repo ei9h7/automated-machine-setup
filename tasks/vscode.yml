@@ -11,14 +11,14 @@
 - name: Create a default VSCode configuration (linux)
   copy:
     src: "{{ vsc_custom_config }}"
-    dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/settings.json"
+    dest: "{{ lookup('env', 'HOME') }}/.config/VSCodium/User/settings.json"
     owner: "{{ lookup('env', 'USER') }}"
     force: "{{ vsc_settings_overwrite }}"
 
 - name: Create a default VSCode keybinding configuration (linux)
   copy:
     src: "{{ vsc_custom_keys }}"
-    dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/keybindings.json"
+    dest: "{{ lookup('env', 'HOME') }}/.config/VSCodium/User/keybindings.json"
     owner: "{{ lookup('env', 'USER') }}"
     force: "{{ vsc_keys_overwrite }}"
         
