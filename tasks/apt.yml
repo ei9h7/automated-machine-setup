@@ -2,26 +2,26 @@
 # Install apt packages
 
 - name: Install apt packages
+  become: true
   apt:
-    pkg:
-    - "{ item }"
+    pkg: "{{ apt_installed_packages }}"
     state: latest
     install_recommends: no
     update_cache: "{{ apt_update_cache }}"
     cache_valid_time: "{{ apt_cache_time }}" 
-    with_items: "{{ apt_installed_packages }}"
 
 - name: Remove apt packages
+  become: true
   apt:
-    pkg:
-    - "{{ item }}"
+    pkg: "{{ apt_removed_packages }}"
     state: absent
-    with_items: "{ apt_removed_packages }"
 
 - name: autoclean
+  become: true
   apt:
     autoclean: "{{ apt_autoclean}}"
 
 - name: autoremove
+  become: true
   apt:
     autoremove: "{{ apt_autoremove }}"

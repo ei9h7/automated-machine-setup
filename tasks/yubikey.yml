@@ -2,34 +2,31 @@
 # Linux Yubikey Configuration
 
 # Install required apt packages
-- name: Install apt packages
+- name: Install yubi dependencies
+  become: true
   apt:
-    pkg:
-    - wget
-    - gnupg2
-    - gnupg-agent
-    - dirmngr
-    - cryptsetup
-    - scdaemon
-    - pcscd
-    - secure-delete
-    - hopenpgp-tools
-    - yubikey-personalization
+    pkg: "{{ yubi_depends }}"
     state: latest
     install_recommends: no
-    update_cache: yes
-    cache_valid_time: 3600
+    update_cache: "{{ apt_update_cache }}"
+    cache_valid_time: "{{ apt_cache_time }}" 
 
 # Remove gnome keyring fuckery
-- name: Remove apt packages
+- name: gnome keyring fuckery
+  become: true
   apt:
-    pkg:
-    - libpam-gnome-keyring
+    pkg: libpam-gnome-keyring
     state: absent
-
+    
 # Ensure yubikey udev rule exists      
-- name: Yubikey rules
+- name: Ensure udev rule is present
+  become: true
+  file:
+    path: "/etc/udev/rules.d/99-yubikeys.rules"
+    state: touch
+
+- name: Ensure udev rule is correct
+  become: true
   lineinfile:
     path: "/etc/udev/rules.d/99-yubikeys.rules"
     line: 'ACTION=="add",SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0404", OWNER="${USER}"'
-  become: true
