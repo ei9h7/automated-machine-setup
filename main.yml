@@ -3,7 +3,6 @@
 
   vars_files:
     - laptop.config.yml #Include linux configuration
-    - vars/homebrew.yml
     - vars/yubikey.yml
     - vars/all.yml
 
@@ -27,10 +26,6 @@
     - import_tasks: tasks/linux.yml
       when: configure_linux
       tags: ['linux']
-
-    - import_tasks: tasks/homebrew.yml
-      when: configure_homebrew
-      tags: ['homebrew']
 
     - import_tasks: tasks/apt.yml
       when: configure_apt
