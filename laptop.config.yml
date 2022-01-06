@@ -39,7 +39,7 @@ sudoers_custom_config: |
 
 # Customize OS
 configure_linux: false
-linux_script: "$DOTFILES/.linux-defaults --no-restart"
+linux_script: "{{ dotfiles_repo_local_destination }}/.linux-defaults --no-restart"
 
 # Set default shell (choose only one)
 set_zsh: false
@@ -188,8 +188,8 @@ vsc_extensions:
   - ms-vscode.powershell
 vsc_settings_overwrite: yes
 vsc_keys_overwrite: yes
-vsc_custom_config: "$DOTFILES/.config/vscode/settings.json"
-vsc_custom_keys: "$DOTFILES/.config/vscode/keybindings.json"
+vsc_custom_config: "{{ dotfiles_repo_local_destination }}/.config/vscode/settings.json"
+vsc_custom_keys: "{{ dotfiles_repo_local_destination }}/.config/vscode/keybindings.json"
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
