@@ -66,18 +66,79 @@ homebrew_taps: []
 # Set 'true' to configure apt packages
 configure_apt: true
 apt_installed_packages:
-    # - ansible
+    # - ansible #installed via pip
+    - bash
+    - bash-completion
+    - btrfs-progs
     - build-essential
-    - procps
+    - bzip2
+    - ca-certificates
+    - coreutils
+    - cryptsetup
     - curl
+    - diffutils
+    - dirmngr
+    - dracut
+    - e2fsprogs
+    - eatmydata
     - file
+    - findutils
+    - gcc
     - git
+    - gnupg2
+    - gnupg-agent
+    - gpg
+    - gzip
+    - hcxtools
+    - hfsplus
+    - hfsutils
+    - hopenpgp-tools
+    - htop
+    - libpam-yubico
+    - mbpfan
+    - neovim
+    - ntfs-3g
+    - pcscd
+    - perl
+    - pinentry-curses
+    - python3
+    - python-yubico-tools    
+    - rng-tools5
+    - rclone
+    - rsync
+    - scdaemon
+    - snapd
+    - tar
+    - vim-common
+    - vscodium
+    - wget
+    - ykcs11
+    - ykls
+    - yubico-piv-tool
+    - yubikey-personalization
+    - yubioath-desktop
+    - zsh
+    - zsh-autocomplete
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
 apt_removed_packages: []
 apt_update_cache: true
 apt_cache_time: 3600
 # Set 'true' to autoclean and autoremove
 apt_autoclean: true
 apt_autoremove: false
+
+# Set 'true' to configure apt packages
+configure_snap: true
+snap_installed_packages:
+  - gitkraken --classic
+  - intellij-idea-community --classic
+  - multipass
+  - nordpass
+  - nordvpn-electron
+  - powershell --classic
+  - pycharm-educational --classic
+snap_removed_packages: []
 
 # Set to 'true' to configure the terminal theme etc
 configure_terminal: false
@@ -95,12 +156,10 @@ pip_packages: []
 configure_yubikey: true
 
 # Set to 'true' to configure Visual Studio Code
-configure_vsc: false
+configure_vsc: true
 vsc_extensions:
-  - azblockchain.azure-blockchain
   - coenraads.bracket-pair-colorizer-2
   - aaronyoung.dark-synthwave-vscode
-  - ms-azuretools.vscode-docker
   - formulahendry.docker-explorer
   - quentingruber.dockerfiletemplate
   - tqrhsn.vscode-docker-registry-explorer
@@ -123,12 +182,11 @@ vsc_extensions:
   - ms-vscode-remote.vscode-remote-extensionpack
   - juanblanco.solidity
   - robbowen.synthwave-vscode
-  - visualstudioexptteam.vscodeintellicode
   - dunstontc.vscode-docker-syntax
   - redhat.vscode-yaml
   - ms-vscode.powershell
-vsc_settings_overwrite: no
-vsc_keys_overwrite: no
+vsc_settings_overwrite: yes
+vsc_keys_overwrite: yes
 vsc_custom_config: "$DOTFILES/.config/vscode/settings.json"
 vsc_custom_keys: "$DOTFILES/.config/vscode/keybindings.json"
 
