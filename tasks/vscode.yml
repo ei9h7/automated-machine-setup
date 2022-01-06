@@ -23,5 +23,5 @@
     force: "{{ vsc_keys_overwrite }}"
         
 - name: Install VSCode extensions
-  shell: "code --install-extension {{ item }}"
+  shell: "codium --install-extension {{ item }}"
   with_items: "{{ vsc_extensions }}"
