@@ -2,8 +2,8 @@
 
 - name: Create symlink for vscodium to 'Code'.
   file:
-    src: ""{{ lookup('env', 'HOME') }}/.config/Code"
-    dest: ""{{ lookup('env', 'HOME') }}/.config/VSCode"
+    src: "{{ lookup('env', 'HOME') }}/.config/Code"
+    dest: "{{ lookup('env', 'HOME') }}/.config/VSCode"
     state: link
     become: false
     
