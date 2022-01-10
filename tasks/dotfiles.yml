@@ -45,3 +45,10 @@
     state: link
   become: false
   with_items: "{{ dotfiles_files }}"
+
+- name: Link update command into local bin.
+  file:
+    src: "{{ dotfiles_home }}/projects/automated-machine-setup/update"
+    dest: "/usr/local/bin/update-machine"
+    state: link
+  become: true
