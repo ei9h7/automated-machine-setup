@@ -99,6 +99,7 @@ homebrew_installed_packages:
   - git
   - go
   - grc
+  - hopenpgp-tools
   - hub
   - lazydocker
   - libtool
@@ -128,8 +129,10 @@ homebrew_installed_packages:
   - tldr
   - tmux
   - tmux-xpanes
+  - wget
   - wimlib
   - x11vnc
+  - ykman
   - ykpers
   - yubico-piv-tool
   - yubikey-agent
@@ -171,6 +174,7 @@ homebrew_cask_apps:
   - keka
   - kekaexternalhelper
   - keybase
+  - ledger-live
   - lens
   - macfuse
   - macs-fan-control
