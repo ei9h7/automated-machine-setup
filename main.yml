@@ -2,8 +2,8 @@
 - hosts: all
 
   vars_files:
-    - laptop.config.yml #Include linux configuration
-    - vars/yubikey.yml
+    - rpi.config.yml #Include linux configuration
+#   - vars/yubikey.yml
     - vars/all.yml
 
   pre_tasks:

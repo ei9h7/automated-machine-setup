@@ -12,17 +12,13 @@ dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/projects/dotfiles"
 dotfiles_home: "{{ lookup('env', 'HOME') }}"
 dotfiles_files:
-  - .config/htop
-  - .config/neofetch
   - .gitconfig
   - .gnupg/gpg-agent.conf
   - .bash_profile
   - .bashrc
   - .gitignore
   - .gitmodules
-  - .hyper.js
   - .inputrc
-  - .nanorc
   - .profile
   - .screenrc
   - .tmux.conf
@@ -69,18 +65,11 @@ apt_installed_packages:
     # - ansible #installed via pip
     - bash
     - bash-completion
-    - btrfs-progs
+    - zsh
+    - ruby
     - build-essential
-    - bzip2
     - ca-certificates
-    - coreutils
-    - cryptsetup
-    - curl
-    - diffutils
-    - dirmngr
-    - dracut
     - e2fsprogs
-    - eatmydata
     - file
     - findutils
     - gcc
@@ -88,39 +77,6 @@ apt_installed_packages:
     - gnupg2
     - gnupg-agent
     - gpg
-    - gzip
-    - hcxtools
-    - hfsplus
-    - hfsutils
-    - hopenpgp-tools
-    - htop
-    - libpam-yubico
-    - mbpfan
-    - neovim
-    - ntfs-3g
-    - pcscd
-    - perl
-    - pinentry-curses
-    - python3
-    - python-yubico-tools    
-    - rng-tools5
-    - rclone
-    - rsync
-    - scdaemon
-    - snapd
-    - tar
-    - vim-common
-    - vscodium
-    - wget
-    - ykcs11
-    - ykls
-    - yubico-piv-tool
-    - yubikey-personalization
-    - yubioath-desktop
-    - zsh
-    - zsh-autocomplete
-    - zsh-autosuggestions
-    - zsh-syntax-highlighting
 apt_removed_packages: []
 apt_update_cache: true
 apt_cache_time: 3600
@@ -129,16 +85,9 @@ apt_autoclean: true
 apt_autoremove: false
 
 # Set 'true' to configure apt packages
-configure_snap: true
-snap_installed_packages_classic:
-  - gitkraken --classic
-  - intellij-idea-community --classic
-  - powershell --classic
-  - pycharm-educational --classic
-snap_installed_packages:
-  - multipass
-  - nordpass
-  - nordvpn-electron
+configure_snap: false
+snap_installed_packages_classic: []
+snap_installed_packes: []
 snap_removed_packages: []
 
 # Set to 'true' to configure the terminal theme etc
@@ -154,10 +103,10 @@ npm_packages: []
 pip_packages: []
 
 # configure yubikey
-configure_yubikey: true
+configure_yubikey: false
 
 # Set to 'true' to configure Visual Studio Code
-configure_vsc: true
+configure_vsc: false
 vsc_extensions:
   - coenraads.bracket-pair-colorizer-2
   - aaronyoung.dark-synthwave-vscode
