@@ -43,7 +43,7 @@ sudoers_custom_config: |
 
 # Customize OS    
 configure_osx: true
-osx_script: "{{ lookup('env', 'DOTFILES') }}/.macos-defaults --no-restart"
+osx_script: "{{ dotfiles_repo_local_destination }}/.macos-defaults --no-restart"
 
 # Set default shell (choose only one)
 set_zsh: false
