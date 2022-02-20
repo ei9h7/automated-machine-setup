@@ -1,0 +1,23 @@
+---
+users:
+  - name: ei9h7
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD21Vp3VK2fb3NMLIJBUJkgAOvDI1ZWDsKjR8IBz/mT2VMPUuUewhZJ1eiavKzUMXpQt6CpOKdEmvTENFcEVp4Upz3cYIQB28BoWJE+W034xD3f/fJ8IvGYTawlrR2gcDZ3DAN7E+7P4qbqetSHiNfzba9P/Xv2/Zu2IPysZwu2szKTB8YBfjlfIqQENJHt5tzeZrVNALimgQOOkJrlYejbJDG+4W0FyvQwiP7P1dYvJVmDLoXo8hIo/vbWmV2+pnHBOPIII4NVDGR9SiIhBWrKbodWaWLTGTLnU+SNWuO+vUgKqntdJ+zrcPjaI997HnTR9RLz7Uyx0niZ/g3Mqk5fute1JP528dPd2DQTQCeRudOkQ3oHsn3zT4UfaGdO/LMqnoMhwMIA2yGP1btGGNmEhvywZnN/mK+WjCKw7F6nceTnD+wGzULFW3QrIlDrtgHPhiZ/kWB1HmqSkXq8pV2KvCb43r5+pkXqz1Auz7+vr0VWDVjLcGYXcSqQ1k00URfppwz806ocLcZRX0dxjehakxN3IEm658Nv6bSPjqcUzdfOuA2EZgqvO8aIkXJ2hdcK/UDq7pQEwAkSf+HRmHqLO+xo+PnWj/NIsM6BMX4JIVIhgK65vEok381SUoRwzdsw8XZI+ctbelHy+XFP0WLYecerH7s0jk3yPBO5/k6jsQ== cardno:17 916 435
+package_update: true
+packages:
+  - docker.io
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+  - net-tools
+  - wireless-tools
+  - network-manager
+runcmd:
+  # - sudo curl -fsSL https://get.docker.com | sudo bash
+  - sudo systemctl enable docker
+  - sudo systemctl enable -s HUP ssh
+  - sudo groupadd docker
+  - sudo usermod -aG docker ubuntu

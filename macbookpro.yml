@@ -87,7 +87,7 @@ homebrew_installed_packages:
 # - docker-completion
 # - docker-compose
 # - docker-compose-completion
-# - docker-machine
+  - docker-machine
 # - docker-machine-parallels
 # - docker-toolbox
   - dockutil
@@ -119,6 +119,7 @@ homebrew_installed_packages:
   - pam_yubico
 # - perl@5.18
   - pinentry-mac
+  - pyenv
   - rclone
   - rsync
   - rsync-time-backup
@@ -142,22 +143,19 @@ homebrew_installed_packages:
 homebrew_uninstalled_packages: []
 homebrew_cask_appdir: "/Applications"
 homebrew_cask_apps:
-  - 1clipboard
-# - amazon-music
   - angry-ip-scanner
   - appcleaner
-  - atom
   - balenaetcher
   - backuploupe
   - battle-net
   - boxcryptor
+  - brave-browser
   - carbon-copy-cloner
 # For macOS that doesnt support vers. 6   
 # - carbon-copy-cloner5   
   - command-pad
   - docker
   - duplicati
-  - eloston-chromium
   - font-fira-code-nerd-font
   - font-fira-mono-nerd-font
   - font-hack-nerd-font
@@ -168,23 +166,21 @@ homebrew_cask_apps:
   - google-chrome
   - google-drive-file-stream
   - gpg-suite-no-mail
-  - icanhazshortcut
+  - ipfs
   - iterm2
-  - jetbrains-toolbox
   - keka
   - kekaexternalhelper
   - keybase
   - ledger-live
-  - lens
   - macfuse
   - macs-fan-control
   - macvim
-  - mdrp
   - meld
   - microsoft-auto-update
   - microsoft-office
   - multipass
   - musicbrainz-picard
+  - netspot
   - nordlocker
   - nordpass
   - nordvpn
@@ -193,18 +189,15 @@ homebrew_cask_apps:
   - obs-ndi
   - obs-virtualcam
   - obs-websocket
-  - parallels12
-  - phpstorm
+#  - parallels12
   - plex
   - plexamp
-  - pycharm-edu
   - raspberry-pi-imager
   - spotify
 # - spotify-now-playing
   - steam
   - the-unarchiver
   - tunnelblick
-  - unetbootin
   - unity
   - unity-hub
   - vagrant
@@ -215,6 +208,7 @@ homebrew_cask_apps:
   - vlc
 # - vnc-viewer
   - wireshark
+  - xquartz
   - yubico-authenticator
   - yubico-yubikey-manager
   - yubico-yubikey-personalization-gui
@@ -248,14 +242,11 @@ dockitems_persist:
   - name: "AppCleaner"
     path: "/Applications/AppCleaner.app/"
     pos: 1
-  - name: "Atom"
-    path: "/Applications/Atom.app/"
-    pos: 2
   - name: "Canary Mail"
     path: "/Applications/Canary Mail.app/"
     pos: 4
-  - name: "Chromium"
-    path: "/Applications/Chromium.app/"
+  - name: "Brave Browser"
+    path: "/Applications/Brave Browser.app/"
     pos: 5
   - name: "Command Pad"
     path: "/Applications/Command Pad.app/"
@@ -278,15 +269,6 @@ dockitems_persist:
   - name: "NVIDIA GeForce NOW"
     path: "/Applications/NVIDIA GeForce NOW.app/"
     pos: 12
-  - name: "PhpStorm"
-    path: "/Applications/PhpStorm.app/"
-    pos: 13
-  - name: "PyCharm Edu"
-    path: "/Applications/PyCharm Edu.app/"
-    pos: 14
-  - name: "Terminal"
-    path: "/Applications/Utilities/Terminal.app/"
-    pos: 15
   - name: "iTerm"
     path: "/Applications/iTerm.app/"
     pos: 16
@@ -300,13 +282,10 @@ mas_installed_app_ids: [] # deprecated
 mas_installed_apps:
   - { id: 937984704, name: "Amphetamine" }
   - { id: 1236045954, name: "Canary Mail" }
-  - { id: 484889220, name: "Cryptext" }
-  - { id: 1012138285, name: "Crypto-Maker" }
   - { id: 425264550, name: "Disk Speed Test" }
   - { id: 1406832001, name: "Emporter" }
   - { id: 935235287, name: "Encrypto" }
   - { id: 1298486723, name: "Filezilla" }
-  - { id: 909212772, name: "Fhotoroom X" }
   - { id: 486626129, name: "Folder Tidy" }
   - { id: 553245401, name: "Friendly Streaming" }
   - { id: 1090488118, name: "Gemini 2" }
@@ -314,14 +293,11 @@ mas_installed_apps:
   - { id: 607997198, name: "Marko" }
   - { id: 533491939, name: "Mint QuickView" }
   - { id: 409203825, name: "Numbers" }
-  - { id: 1520395378, name: "Ownr Crypto Wallet" }
   - { id: 409201541, name: "Pages" }
-  - { id: 888806818, name: "Password Factory" }
   - { id: 1099475282, name: "SnailGit Lite" }
   - { id: 707452888, name: "Spike Email" }
   - { id: 1452212620, name: "StartUp" }
   - { id: 1496833156, name: "Swift Playgrounds" }
-  - { id: 1102494854, name: "System Designer" }
   - { id: 571654652, name: "Toolbox for Pages" }
   - { id: 1480933944, name: "Vimari" }
 # - { id: 497799835, name: "Xcode" }
@@ -338,9 +314,18 @@ gem_packages:
   - name: colorls
     state: latest
 
-npm_packages: []
+npm_packages:
+  - name: yarn
+    state: latest
 
-pip_packages: []
+pip_packages: 
+  - name: pyrit
+    state: latest
+  - name: requests
+    state: latest
+      
+pyenv_packages:
+  - 2.7.18
 
 # configure yubikey
 configure_yubikey: true
