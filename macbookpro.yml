@@ -11,7 +11,7 @@ configure_dotfiles: true
 dotfiles_repo: "https://github.com/ei9h7/dotfiles.git"
 dotfiles_repo_version: "macos"
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/projects/dotfiles"
+dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/repos/dotfiles"
 dotfiles_home: "{{ lookup('env', 'HOME') }}"
 dotfiles_files:
   - .config/htop
@@ -25,7 +25,6 @@ dotfiles_files:
   - .gitmodules
   - .hyper.js
   - .inputrc
-  - .mackup.cfg
   - .nanorc
   - .profile
   - .screenrc
@@ -87,7 +86,7 @@ homebrew_installed_packages:
 # - docker-completion
 # - docker-compose
 # - docker-compose-completion
-  - docker-machine
+# - docker-machine
 # - docker-machine-parallels
 # - docker-toolbox
   - dockutil
@@ -103,7 +102,7 @@ homebrew_installed_packages:
   - hub
   - lazydocker
   - libtool
-  - python@3.9
+# - python@3.9
   - imagemagick
   - libmusicbrainz
   - libyubikey
@@ -119,7 +118,7 @@ homebrew_installed_packages:
   - pam_yubico
 # - perl@5.18
   - pinentry-mac
-  - pyenv
+# - pyenv
   - rclone
   - rsync
   - rsync-time-backup
@@ -138,8 +137,8 @@ homebrew_installed_packages:
   - yubico-piv-tool
   - yubikey-agent
 # - zsh
-  - zsh-git-prompt
-  - zsh-lovers
+# - zsh-git-prompt
+# - zsh-lovers
 homebrew_uninstalled_packages: []
 homebrew_cask_appdir: "/Applications"
 homebrew_cask_apps:
@@ -149,10 +148,10 @@ homebrew_cask_apps:
   - backuploupe
   - battle-net
   - boxcryptor
-  - brave-browser
-  - carbon-copy-cloner
+# - brave-browser
+# - carbon-copy-cloner
 # For macOS that doesnt support vers. 6   
-# - carbon-copy-cloner5   
+  - carbon-copy-cloner5   
   - command-pad
   - docker
   - duplicati
@@ -164,7 +163,7 @@ homebrew_cask_apps:
   - font-victor-mono-nerd-font
   - gitkraken
   - google-chrome
-  - google-drive-file-stream
+# - google-drive-file-stream
   - gpg-suite-no-mail
   - ipfs
   - iterm2
@@ -175,11 +174,10 @@ homebrew_cask_apps:
   - macfuse
   - macs-fan-control
   - macvim
-  - meld
+# - meld
   - microsoft-auto-update
   - microsoft-office
   - multipass
-  - musicbrainz-picard
   - netspot
   - nordlocker
   - nordpass
@@ -189,7 +187,7 @@ homebrew_cask_apps:
   - obs-ndi
   - obs-virtualcam
   - obs-websocket
-#  - parallels12
+# - parallels12
   - plex
   - plexamp
   - raspberry-pi-imager
@@ -223,58 +221,63 @@ configure_terminal: true
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: true
 dockitems_remove:
+# - Finder
 # - Launchpad
-  - 'App Store'
+# - Safari
   - Mail
-  - Contacts
-  - Maps
-  - Photos
-# - Messages
   - Facetime
-  - News
-  - Books
-  - Podcasts
-  - Music
-  - TV
+  - Messages
+  - Maps
+  - Contacts
+  - Calendar
+  - Reminders
+  - Notes
 # - iTunes
-# - 'System Preferences'
+  - Music
+  - Podcasts
+  - TV
+  - News
+  - 'App Store'
+  - 'System Preferences'
+  - Photos
+  - Books
 dockitems_persist:
-  - name: "AppCleaner"
-    path: "/Applications/AppCleaner.app/"
-    pos: 1
-  - name: "Canary Mail"
-    path: "/Applications/Canary Mail.app/"
-    pos: 4
-  - name: "Brave Browser"
-    path: "/Applications/Brave Browser.app/"
-    pos: 5
-  - name: "Command Pad"
-    path: "/Applications/Command Pad.app/"
-    pos: 6
-  - name: "Friendly Streaming"
-    path: "/Applications/Friendly Streaming.app/"
-    pos: 7
-  - name: "GitKraken"
-    path: "/Applications/GitKraken.app/"
-    pos: 8
-  - name: "MacVim"
-    path: "/Applications/MacVim.app/"
-    pos: 9
-  - name: "Marko"
-    path: "/Applications/Marko.app/"
-    pos: 10
-  - name: "Meld"
-    path: "/Applications/Meld.app/"
-    pos: 11
-  - name: "NVIDIA GeForce NOW"
-    path: "/Applications/NVIDIA GeForce NOW.app/"
-    pos: 12
-  - name: "iTerm"
-    path: "/Applications/iTerm.app/"
-    pos: 16
-  - name: "Visual Studio Code"
-    path: "/Applications/Visual Studio Code.app/"
-    pos: 17
+# - name: "AppCleaner"
+#   path: "/Applications/AppCleaner.app/"
+#   pos: 1
+# - name: "Canary Mail"
+#   path: "/Applications/Canary Mail.app/"
+#   pos: 4
+# - name: "Brave Browser"
+#   path: "/Applications/Brave Browser.app/"
+#   pos: 5
+# - name: "Command Pad"
+#   path: "/Applications/Command Pad.app/"
+#   pos: 6
+# - name: "Friendly Streaming"
+#   path: "/Applications/Friendly Streaming.app/"
+#   pos: 7
+# - name: "GitKraken"
+#   path: "/Applications/GitKraken.app/"
+#   pos: 8
+# - name: "MacVim"
+#   path: "/Applications/MacVim.app/"
+#   pos: 9
+# - name: "Marko"
+#   path: "/Applications/Marko.app/"
+#   pos: 10
+# - name: "Meld"
+#   path: "/Applications/Meld.app/"
+#   pos: 11
+# - name: "NVIDIA GeForce NOW"
+#   path: "/Applications/NVIDIA GeForce NOW.app/"
+#   pos: 12
+# - name: "iTerm"
+#   path: "/Applications/iTerm.app/"
+#   pos: 16
+# - name: "Visual Studio Code"
+#   path: "/Applications/Visual Studio Code.app/"
+#   pos: 17
 
 # Set 'true' to configure Apple App Store
 configure_macstore: true
@@ -300,7 +303,7 @@ mas_installed_apps:
   - { id: 1496833156, name: "Swift Playgrounds" }
   - { id: 571654652, name: "Toolbox for Pages" }
   - { id: 1480933944, name: "Vimari" }
-# - { id: 497799835, name: "Xcode" }
+  - { id: 497799835, name: "Xcode" }
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
 mas_upgrade_all_apps: true
@@ -318,23 +321,22 @@ npm_packages:
   - name: yarn
     state: latest
 
-pip_packages: 
-  - name: pyrit
-    state: latest
-  - name: requests
-    state: latest
+# pip_packages: 
+#   - name: pyrit
+#     state: latest
+#   - name: requests
+#     state: latest
       
-pyenv_packages:
-  - 2.7.18
+# pyenv_packages:
+#   - 2.7.18
 
 # configure yubikey
-configure_yubikey: true
+configure_yubikey: false
 
 # Set to 'true' to configure Visual Studio Code
 configure_vsc: true
 vsc_extensions:
   - azblockchain.azure-blockchain
-  - coenraads.bracket-pair-colorizer-2
   - aaronyoung.dark-synthwave-vscode
   - ms-azuretools.vscode-docker
   - formulahendry.docker-explorer
@@ -358,9 +360,7 @@ vsc_extensions:
   - ms-vscode-remote.vscode-remote-extensionpack
   - juanblanco.solidity
   - robbowen.synthwave-vscode
-  - visualstudioexptteam.vscodeintellicode
   - dunstontc.vscode-docker-syntax
-  - redhat.vscode-yaml
   - ms-vscode.powershell
 vsc_settings_overwrite: yes
 vsc_keys_overwrite: no
