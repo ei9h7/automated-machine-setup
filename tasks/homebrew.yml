@@ -13,7 +13,7 @@
     path: "{{ homebrew_prefix }}"
     owner: root
     state: directory
-  become: true
+  become: false
   when: "ansible_distribution_version is version('10.13', '>=')"
 
 - name: Ensure Homebrew parent directory has correct permissions (MacOS < 10.13).
@@ -33,7 +33,7 @@
     group: "{{ homebrew_group }}"
     state: directory
     mode: 0775
-  become: true
+  become: false
 
 # Clone Homebrew.
 - name: Ensure Homebrew is installed.
@@ -54,7 +54,7 @@
     owner: "{{ homebrew_user }}"
     group: "{{ homebrew_group }}"
     mode: 0775
-  become: true
+  become: false
 
 - name: Ensure proper ownership on homebrew_install_path subdirs.
   file:
@@ -62,7 +62,7 @@
     state: directory
     owner: "{{ homebrew_user }}"
     group: "{{ homebrew_group }}"
-  become: true
+  become: false
 
 # Place brew binary in proper location and complete setup.
 - name: Check if homebrew binary is already in place.
@@ -84,7 +84,7 @@
     state: directory
     owner: "{{ homebrew_user }}"
     group: "{{ homebrew_group }}"
-  become: true
+  become: false
   loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
 
 - name: Clear homebrew cache
