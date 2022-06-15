@@ -58,7 +58,7 @@ homebrew_cache_path: "{{ homebrew_brew_bin_path }}/brew --cache"
 homebrew_upgrade_all_packages: false
 homebrew_cask_accept_external_apps: true
 homebrew_use_brewfile: false
-homebrew_brewfile_dir: "$DOTFILES"
+homebrew_brewfile_dir: "{{ dotfiles_repo_local_destination }}"
 homebrew_clear_cache: false
 homebrew_folders_additional: []
 homebrew_taps:
@@ -334,7 +334,7 @@ npm_packages:
 configure_yubikey: false
 
 # Set to 'true' to configure Visual Studio Code
-configure_vsc: true
+configure_vsc: false
 vsc_extensions:
   - azblockchain.azure-blockchain
   - aaronyoung.dark-synthwave-vscode
@@ -363,7 +363,7 @@ vsc_extensions:
   - dunstontc.vscode-docker-syntax
   - ms-vscode.powershell
 vsc_settings_overwrite: yes
-vsc_keys_overwrite: no
+vsc_keys_overwrite: yes
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []

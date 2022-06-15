@@ -42,6 +42,7 @@
 
 # Use sudo once .macos-defaults can be run via root with no user interaction.
 - name: Run .macos-defaults dotfiles.
-  command: "{{ osx_script }}"
+  shell: "sh {{ osx_script }}"
+# command: "{{ osx_script }}"
   changed_when: false
   become: true
