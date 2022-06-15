@@ -48,7 +48,7 @@
 
 - name: Link update command into local bin.
   file:
-    src: "{{ dotfiles_repo_local_destination }}/update"
+    src: "{{ dotfiles_home }}/repos/automated-machine-install/update"
     dest: "/usr/local/bin/update-machine"
     state: link
-  become: true
+  become: false
