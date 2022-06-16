@@ -1,0 +1,11 @@
+---
+
+- name: Get rclone stable version {{ rclone_version }}
+  unarchive:
+    # src: https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-osx-{{ rclone_arch }}.zip
+    src: https://downloads.rclone.org/rclone-current-osx-amd64.zip
+    dest: "{{ rclone_setup_tmp_dir }}"
+    remote_src: true
+    mode: 0744
+    creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-osx-{{ rclone_arch }}"
+    # creates: "{{ rclone_setup_tmp_dir }}/rclone-current-osx-{{ rclone_arch }}"

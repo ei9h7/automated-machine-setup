@@ -49,6 +49,10 @@
       when: configure_vsc
       tags: ['visual-studio-code']
 
+    - import_tasks: tasks/rclone.yml
+      when: configure_rclone
+      tags: ['rclone']
+
     - name: Run configured post-provision ansible task files.
       include_tasks: "{{ outer_item }}"
       loop_control:
@@ -65,3 +69,7 @@
       when: 'homebrew_clear_cache | bool'
       become: "{{ (homebrew_user != ansible_user_id) | bool }}"
       become_user: "{{ homebrew_user }}"
+
+    # rclone handler
+    - name: Update facts
+      action: setup
