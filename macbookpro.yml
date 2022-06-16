@@ -341,13 +341,15 @@ npm_packages:
   - name: yarn
     state: latest
 
-# pip_packages: 
-#   - name: pyrit
-#     state: latest
-#   - name: requests
-#     state: latest
-      
-# pyenv_packages:
+pip_packages:
+  - name: pyrit
+    state: latest
+  - name: requests
+    state: latest
+  - name: ansible
+    state: latest 
+     
+pyenv_packages: []
 #   - 2.7.18
 
 # configure yubikey
