@@ -73,7 +73,6 @@ homebrew_taps:
   - mas-cli/tap
   - nrlquaker/createzap
 homebrew_installed_packages:
-  - appcleaner
   - autoconf
   - automake
   - bash
