@@ -281,7 +281,7 @@ dockitems_persist:
     path: "/Applications/GitKraken.app/"
 #   pos:
   - name: "Emporter"
-    Path: "/Applications/Emporter.app"
+    Path: "/Applications/Emporter.app/"
 #   pos:
   - name: "Canary Mail"
     path: "/Applications/Canary Mail.app/"
@@ -293,7 +293,7 @@ dockitems_persist:
     path: "/Applications/Google Chrome.app/"
 #   pos:
   - name: "Safari"
-    Path: "/Applications/Safari.app"
+    Path: "/Applications/Safari.app/"
 #   pos:
   - name: "Friendly Streaming"
     path: "/Applications/Friendly Streaming.app/"

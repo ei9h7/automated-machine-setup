@@ -44,7 +44,7 @@ echo "Checking for Ansible Install"
 pip3 show ansible &> /dev/null
 if [ $? -ne 0 ]; then
     echo 'Ansible not found. Installing Ansible...'
-    sudo pip3 install ansible --ignore-installed
+    /usr/local/bin/pip3 install ansible --ignore-installed
 else
      echo 'Ansible already installed.' 
 fi
