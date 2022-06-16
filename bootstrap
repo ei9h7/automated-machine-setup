@@ -1,10 +1,45 @@
 #!/bin/sh
-xcode-select --install
-sudo xcodebuild -license
-/usr/sbin/softwareupdate --install-rosetta
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
-sudo pip3 install ansible
+
+# Install Command Line Tools
+echo "Checking Xcode CLI tools"
+# Only run if the tools are not installed yet
+# To check that try to print the SDK path
+xcode-select -p &> /dev/null
+if [ $? -ne 0 ]; then
+  echo "Xcode CLI tools not found. Installing them..."
+  touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+  PROD=$(softwareupdate -l |
+    grep "\*.*Command Line" |
+    tail -n 1 | sed 's/^[^C]* //')
+  softwareupdate -i "$PROD" --verbose;
+else
+  echo "Xcode CLI tools OK"
+fi
+
+#install pip
+# if pip3 show pip &> /dev/null; then
+command -v pip3 &> /dev/null
+if [ $? -ne 0 ]; then
+    echo 'pip3 not found. Installing pip...'
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python3 get-pip.py
+else
+     echo 'pip already installed.' 
+fi
+
+#install ansible
+pip3 show ansible &> /dev/null
+if [ $? -ne 0 ]; then
+    echo 'Ansible not found. Installing Ansible...'
+    sudo pip3 install ansible --ignore-installed
+else
+     echo 'Ansible already installed.' 
+fi
+
+#install machine setup ansible requirements
+echo 'Install Ansible Galaxy Requirements'
 ansible-galaxy install -r requirements.yml
+
+# run machine setup/update ansible playbook
 chmod +x update
 sh update
