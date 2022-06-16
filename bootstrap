@@ -16,18 +16,31 @@ else
   echo "Xcode CLI tools OK"
 fi
 
-#install pip
-# if pip3 show pip &> /dev/null; then
+#install homebrew
+echo "Checking Homebrew Install"
+# Install Homebrew if it is not installed
+if [[ $(command -v brew) == "" ]]; then 
+  echo "Installing Homebrew.. "
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  echo "Updating Homebrew.. "
+  brew update
+fi
+
+#install python3/pip
+echo "Checking Python3/pip Install"
+# Install if Python3/pip is not installed yet
 command -v pip3 &> /dev/null
 if [ $? -ne 0 ]; then
     echo 'pip3 not found. Installing pip...'
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    python3 get-pip.py
+    brew install python3
 else
-     echo 'pip already installed.' 
+     echo 'python3/pip already installed.' 
 fi
 
 #install ansible
+echo "Checking for Ansible Install"
+# If not installed then install with pip
 pip3 show ansible &> /dev/null
 if [ $? -ne 0 ]; then
     echo 'Ansible not found. Installing Ansible...'
