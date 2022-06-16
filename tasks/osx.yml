@@ -12,7 +12,7 @@
   lineinfile:
     path: /etc/shells
     line: "{{ zsh_path.stdout }}"
-  become: true
+  become: false
 
 # Add Homebrew BASH to allowed shells
 #- name: Ensure BASH is installed.
@@ -27,18 +27,18 @@
   lineinfile:
     path: /etc/shells
     line: "{{ bash_path.stdout }}"
-  become: true
+  become: false
 
 # Set default shell  
 - name: Set ZSH as the default shell
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
   when: set_zsh
-  become: true
+  become: false
 
 - name: Set BASH as the default shell
   shell: chsh -s $(which bash) {{ lookup('env', 'USER') }}
   when: set_bash 
-  become: true
+  become: false
 
 # Use sudo once .macos-defaults can be run via root with no user interaction.
 - name: Run .macos-defaults dotfiles.
