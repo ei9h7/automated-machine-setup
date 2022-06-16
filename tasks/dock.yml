@@ -1,6 +1,6 @@
 ---
 - name: Install dockutil.
-  pip:
+  homebrew:
     name: dockutil
     state: present
 
