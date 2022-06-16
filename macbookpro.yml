@@ -73,6 +73,7 @@ homebrew_taps:
   - mas-cli/tap
   - nrlquaker/createzap
 homebrew_installed_packages:
+  - appcleaner
   - autoconf
   - automake
   - bash
@@ -151,7 +152,8 @@ homebrew_cask_apps:
 # - brave-browser
 # - carbon-copy-cloner
 # For macOS that doesnt support vers. 6   
-  - carbon-copy-cloner5   
+  - carbon-copy-cloner5
+  - coderunner 
   - command-pad
   - docker
   - duplicati
@@ -182,6 +184,7 @@ homebrew_cask_apps:
   - nordlocker
   - nordpass
   - nordvpn
+  - nova
   - nvidia-geforce-now
   - obs
   - obs-ndi
@@ -194,6 +197,7 @@ homebrew_cask_apps:
   - spotify
 # - spotify-now-playing
   - steam
+  - symboliclinker
   - the-unarchiver
   - tunnelblick
   - unity
@@ -242,71 +246,86 @@ dockitems_remove:
   - Photos
   - Books
 dockitems_persist:
-# - name: "AppCleaner"
-#   path: "/Applications/AppCleaner.app/"
-#   pos: 1
-# - name: "Canary Mail"
-#   path: "/Applications/Canary Mail.app/"
-#   pos: 4
-# - name: "Brave Browser"
-#   path: "/Applications/Brave Browser.app/"
-#   pos: 5
-# - name: "Command Pad"
-#   path: "/Applications/Command Pad.app/"
-#   pos: 6
-# - name: "Friendly Streaming"
-#   path: "/Applications/Friendly Streaming.app/"
-#   pos: 7
-# - name: "GitKraken"
-#   path: "/Applications/GitKraken.app/"
-#   pos: 8
-# - name: "MacVim"
-#   path: "/Applications/MacVim.app/"
-#   pos: 9
-# - name: "Marko"
-#   path: "/Applications/Marko.app/"
-#   pos: 10
-# - name: "Meld"
-#   path: "/Applications/Meld.app/"
-#   pos: 11
-# - name: "NVIDIA GeForce NOW"
-#   path: "/Applications/NVIDIA GeForce NOW.app/"
-#   pos: 12
-# - name: "iTerm"
-#   path: "/Applications/iTerm.app/"
-#   pos: 16
-# - name: "Visual Studio Code"
-#   path: "/Applications/Visual Studio Code.app/"
-#   pos: 17
+  - name: "AppCleaner"
+    path: "/Applications/AppCleaner.app/"
+#   pos:
+  - name: "SSH Client"
+    Path: "/Applications/SSH Client.app"
+#   pos:
+  - name: "Terminal"
+    path: "/Applications/Utilities/Terminal.app/"
+#   pos:
+  - name: "MacVim"
+    path: "/Applications/MacVim.app/"
+#   pos:
+  - name: "CodeRunner"
+    Path: "/Applications/CodeRunner.app"
+#   pos:
+  - name: "Nova"
+    Path: "/Applications/Nova.app"
+#   pos:
+  - name: "Visual Studio Code"
+    path: "/Applications/Visual Studio Code.app/"
+#   pos:
+  - name: "Marko"
+    path: "/Applications/Marko.app/"
+#   pos:
+  - name: "Boop"
+    Path: "/Applications/Boop.app"
+#   pos:
+  - name: "Command Pad"
+    path: "/Applications/Command Pad.app/"
+#   pos:
+  - name: "GitKraken"
+    path: "/Applications/GitKraken.app/"
+#   pos:
+  - name: "Emporter"
+    Path: "/Applications/Emporter.app"
+#   pos:
+  - name: "Canary Mail"
+    path: "/Applications/Canary Mail.app/"
+#   pos:
+  - name: "Spike"
+    path: "/Applications/Spike.app/"
+#   pos:
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app/"
+#   pos:
+  - name: "Safari"
+    Path: "/Applications/Safari.app"
+#   pos:
+  - name: "Friendly Streaming"
+    path: "/Applications/Friendly Streaming.app/"
+#   pos:
+  - name: "NVIDIA GeForce NOW"
+    path: "/Applications/NVIDIA GeForce NOW.app/"
+#   pos:
 
 # Set 'true' to configure Apple App Store
 configure_macstore: true
 mas_installed_app_ids: [] # deprecated
 mas_installed_apps:
   - { id: 937984704, name: "Amphetamine" }
+  - { id: 1518425043, name: "Boop" }
   - { id: 1236045954, name: "Canary Mail" }
   - { id: 425264550, name: "Disk Speed Test" }
   - { id: 1406832001, name: "Emporter" }
   - { id: 935235287, name: "Encrypto" }
-  - { id: 1298486723, name: "Filezilla" }
   - { id: 486626129, name: "Folder Tidy" }
   - { id: 553245401, name: "Friendly Streaming" }
   - { id: 1090488118, name: "Gemini 2" }
-  - { id: 490152466, name: "iBooks Author" }
+  - { id: 1410006908, name: "Javascript Recipes" }
   - { id: 607997198, name: "Marko" }
-  - { id: 533491939, name: "Mint QuickView" }
   - { id: 409203825, name: "Numbers" }
   - { id: 409201541, name: "Pages" }
   - { id: 1099475282, name: "SnailGit Lite" }
   - { id: 707452888, name: "Spike Email" }
-  - { id: 1452212620, name: "StartUp" }
+  - { id: 1475741280, name: "SSH Client - Terminal, Telnet" }
   - { id: 1496833156, name: "Swift Playgrounds" }
-  - { id: 571654652, name: "Toolbox for Pages" }
-  - { id: 1480933944, name: "Vimari" }
   - { id: 497799835, name: "Xcode" }
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
-mas_upgrade_all_apps: true
+mas_upgrade_all_apps: false
 mas_email: "eight0n@me.com"
 mas_signin_dialog: true
 
