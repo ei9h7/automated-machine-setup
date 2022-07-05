@@ -12,6 +12,7 @@
   file:
     path: "{{ homebrew_prefix }}"
     owner: root
+    group: wheel
     state: directory
   become: false
   when: "ansible_distribution_version is version('10.13', '>=')"
