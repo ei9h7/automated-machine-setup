@@ -9,7 +9,7 @@ configure_dotfiles: true
 dotfiles_repo: "https://github.com/ei9h7/dotfiles.git"
 dotfiles_repo_version: "debian-linux"
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/projects/dotfiles"
+dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/repos/dotfiles"
 dotfiles_home: "{{ lookup('env', 'HOME') }}"
 dotfiles_files:
   - .config/htop
@@ -97,6 +97,7 @@ apt_installed_packages:
     - libpam-yubico
     - mbpfan
     - neovim
+    - npm
     - ntfs-3g
     - pcscd
     - perl
@@ -131,12 +132,9 @@ apt_autoremove: false
 # Set 'true' to configure apt packages
 configure_snap: true
 snap_installed_packages_classic:
-  - gitkraken --classic
-  - intellij-idea-community --classic
-  - powershell --classic
-  - pycharm-educational --classic
+  - gitkraken
+  - powershell
 snap_installed_packages:
-  - multipass
   - nordpass
   - nordvpn-electron
 snap_removed_packages: []
@@ -147,10 +145,28 @@ configure_terminal: false
 # Install packages from other package managers.
 # Note: Make sure the required package managers are installed.
 composer_packages: []
-gem_packages:
-  - name: colorls
+gem_packages: []
+npm_packages:
+  - name: yarn
     state: latest
-npm_packages: []
+  - name: nbd
+    state: latest
+  - name: tldr
+    state: latest
+  - name: fkill
+    state: latest
+  - name: vtop
+    state: latest
+  - name: create-react-app
+    state: latest
+  - name: react-native-cli
+    state: latest
+  - name: prettier
+    state: latest
+  - name: eslint
+    state: latest
+  - name: typescript
+    state: latest
 pip_packages: []
 
 # configure yubikey
@@ -159,7 +175,6 @@ configure_yubikey: true
 # Set to 'true' to configure Visual Studio Code
 configure_vsc: true
 vsc_extensions:
-  - coenraads.bracket-pair-colorizer-2
   - aaronyoung.dark-synthwave-vscode
   - formulahendry.docker-explorer
   - quentingruber.dockerfiletemplate
