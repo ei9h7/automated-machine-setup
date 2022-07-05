@@ -8,6 +8,7 @@
   loop: "{{ composer_packages }}"
 
 - name: Install global NPM packages.
+  become: true
   npm:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
