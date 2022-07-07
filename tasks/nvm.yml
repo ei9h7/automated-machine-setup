@@ -63,6 +63,11 @@
 
   when: nvm_profile | length != 0
 
+# set nvm_version
+- name: Return nvm_version as latest github version
+  command: 'git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)'
+  register: nvm_version
+
 # wget (default) or curl
 - name: Installing via curl or wget
   block:
@@ -110,7 +115,6 @@
     when: not profile_file.stat.exists
 
   when: nvm_install in ['curl', 'wget']
-
 
 # git
 - name: install via git

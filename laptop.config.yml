@@ -148,8 +148,6 @@ nvm_node_versioning: true
 uninstall: false
 # NVM source location - i.e. you host your own fork
 nvm_source: "https://github.com/nvm-sh/nvm.git"
-# Version of NVM to install
-nvm_version: 'git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)'
 # Set the specific version of Node.js to install ("4.8.0", "6.11.0").
 # use lts for latest Long Term Release
 # Version numbers from Nodesource: https://github.com/nodesource/distributions
