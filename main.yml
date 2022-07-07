@@ -39,6 +39,10 @@
       when: configure_terminal
       tags: ['terminal']
 
+    - import_tasks: tasks/nvm.yml
+      when: nvm_node_versioning
+      tags: ['node']
+
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
 
