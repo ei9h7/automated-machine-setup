@@ -249,30 +249,13 @@ configure_yubikey: true
 # Set to 'true' to configure Visual Studio Code
 configure_vsc: true
 vsc_extensions:
-  - aaronyoung.dark-synthwave-vscode
-  - formulahendry.docker-explorer
-  - quentingruber.dockerfiletemplate
-  - tqrhsn.vscode-docker-registry-explorer
-  - george3447.docker-run
-  - dotiful.dotfiles-syntax-highlighting
-  - blake-mealey.generate-wt-scheme
   - mhutchie.git-graph
-  - github.codespaces
   - github.vscode-pull-request-github
   - eamodio.gitlens
-  - ntc.integrated-terminal-tasks
   - hoovercj.vscode-power-mode
-  - stuyk.powermodesounds
   - ms-python.python
-  - dhedgecock.radical-vscode
-  - ms-vscode-remote.remote-containers
-  - ms-vscode-remote.remote-ssh
-  - ms-vscode-remote.remote-ssh-edit
-  - ms-vscode-remote.remote-wsl
-  - ms-vscode-remote.vscode-remote-extensionpack
   - juanblanco.solidity
   - robbowen.synthwave-vscode
-  - dunstontc.vscode-docker-syntax
   - redhat.vscode-yaml
   - ms-vscode.powershell
 vsc_settings_overwrite: yes
