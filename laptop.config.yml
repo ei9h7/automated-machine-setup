@@ -97,7 +97,6 @@ apt_installed_packages:
     - libpam-yubico
     - mbpfan
     - neovim
-    - npm
     - ntfs-3g
     - pcscd
     - perl
@@ -151,7 +150,10 @@ nvm_source: "https://github.com/nvm-sh/nvm.git"
 # Set the specific version of Node.js to install ("4.8.0", "6.11.0").
 # use lts for latest Long Term Release
 # Version numbers from Nodesource: https://github.com/nodesource/distributions
-nodejs_version: "lts"
+nodejs_version:
+  - lts
+  - node
+nodejs_default_version: "lts"
 # NVM has a bash autocomplete functionality for when a user logs into a machine. Cool feature
 # but only works when a human logs into said machine. More of a convienence method for this role
 autocomplete: false
@@ -170,7 +172,8 @@ default: false
 # Ansible substitution variables e.g. nvm_dir: "{{ansible_env.HOME}}/.nvm"
 nvm_dir: "{{ ansible_env.HOME }}/.nvm"
 # AdHoc NVM Commands
-nvm_commands: []
+nvm_commands:
+  - use "{{ nodejs_default_version }}"
 # Options are wget, curl, git
 # Git :default dest: is the same as nvm_profile below.
 nvm_install: "git"
@@ -199,6 +202,7 @@ nvm_install: "git"
 # ZSH: .zshrc
 #
 nvm_profile: "{{ dotfiles_repo_local_destination }}/.exports"
+nvm_shell: bash
 # nvm installed global package list
 nvm_node_global_packages:
   - name: yarn

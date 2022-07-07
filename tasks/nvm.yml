@@ -16,7 +16,7 @@
         - csh
         - tcsh
       register: shell_path
-      when: item in nvm_profile
+      when: item in nvm_shell
 
     - name: set found path
       set_fact:
@@ -26,22 +26,22 @@
     - name: set bash command
       set_fact:
         user_shell: { 'command': '{{ found_path }} -ic', 'alias': 'bash' }
-      when: "'bash' in nvm_profile or 'exports' in nvm_profile"
+      when: '"bash" in nvm_shell'
 
     - name: set zsh command
       set_fact:
         user_shell: { 'command': '{{ found_path }} -ic', 'alias': 'zsh' }
-      when: '"zsh" in nvm_profile'
+      when: '"zsh" in nvm_shell'
 
     - name: set csh command
       set_fact:
         user_shell: { 'command': '{{ found_path }} -ic', 'alias': 'csh' }
-      when: "'csh' in nvm_profile and 'tcsh' not in nvm_profile"
+      when: "'csh' in nvm_shell and 'tcsh' not in nvm_shell"
 
     - name: set tcsh command
       set_fact:
         user_shell: { 'command': '{{ found_path }} -ic', 'alias': 'tcsh' }
-      when: "'tcsh' in nvm_profile"
+      when: "'tcsh' in nvm_shell"
 
     - name: "!WARNING! set unrecommended default for any other nvm_profile value !WARNING!"
       set_fact:
@@ -62,11 +62,6 @@
       become: true
 
   when: nvm_profile | length != 0
-
-# set nvm_version
-- name: Return nvm_version as latest github version
-  command: 'git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)'
-  register: nvm_version
 
 # wget (default) or curl
 - name: Installing via curl or wget
@@ -99,9 +94,11 @@
   # https://news.ycombinator.com/item?id=12766049
   # https://sandstorm.io/news/2015-09-24-is-curl-bash-insecure-pgp-verified-install
   - name: Install NVM
-    shell: "{{ run_command }} https://raw.githubusercontent.com/creationix/nvm/v{{ nvm_version }}/install.sh | NVM_SOURCE={{ nvm_source }} NVM_DIR={{ nvm_dir }} PROFILE={{ nvm_profile }} {{ user_shell.alias }}"
+    shell: > 
+      "{{ run_command }} https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | {{ user_shell.alias }}"
     args:
       warn: false
+      creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
     register: nvm_result
     changed_when: "'already installed' not in nvm_result.stdout"
     failed_when:
@@ -139,7 +136,7 @@
       git:
         dest: "{{ nvm_dir }}"
         repo: 'https://github.com/nvm-sh/nvm.git'
-        version: "{{ nvm_version }}"
+        version: HEAD
       when: "'/git' in cmd.stdout"
 
     - name: Add NVM to nvm_profile
@@ -178,36 +175,53 @@
 
 # Global Package Install
 - name: Ensure global node package install file exits
+  stat:
+    path: "{{ nvm_dir }}/default-packages"
+  register: package_file
+
+- name: Create package file if it does not exist
   file:
-    path: "$NVM_DIR/default-packages"
-    state: present
+    mode: 0777
+    path: "{{ nvm_dir }}/default-packages"
+    state: touch
+  when: not package_file.stat.exists
 
 - name: Create global node package install list
   lineinfile:
-    path: "$NVM_DIR/default-packages"
+    path: "{{ nvm_dir }}/default-packages"
     line: "{{ item.name }}"
   loop: "{{ nvm_node_global_packages }}"
-
-- name: LTS Check
-  set_fact:
-    nodejs_version: --lts
-  when: "nodejs_version == 'lts'"
+  when: nvm_node_global_packages | length > 0
 
 # This scenario handles the first run/install of NVM because this will automatically
 # alias the specified version as default - This should handle most use cases
-- name: Install Node # noqa 305
-  shell: "{{ user_shell.command + ' \"nvm install ' +  nodejs_version + '\"' }}"
+- name: Install LTS node
+  shell: "{{ user_shell.command + ' \"nvm install --lts \"' }}"
+  with_items: "{{ nodejs_version }}"
+  when: item == "lts"
+  register: node_version_response
+  changed_when: "'already installed' not in node_version_response.stderr"
+ 
+- name: Install node
+  shell: "{{ user_shell.command + ' \"nvm install ' + item + '\"' }}"
+  with_items: "{{ nodejs_version }}"
+  when: item != "lts"
   register: node_version_response
   changed_when: "'already installed' not in node_version_response.stderr"
 
 # In the event there are multiple versions of Node being installed/used/upgraded
 # on the same machine we'll need to alias the default version accordingly
+- name: LTS Default Check
+  set_fact:
+    nodejs_default_version: lts/*
+  when: nodejs_default_version == "lts"
+
 - name: Set default version of Node if multiple versions exist # noqa 305
-  shell: "{{ user_shell.command + ' \"nvm alias default ' +  nodejs_version + '\"' }}"
-  when:  default
+  shell: "{{ user_shell.command + ' \"nvm alias default ' +  nodejs_default_version + '\"' }}"
+  when:  nodejs_default_version | length > 0
 
 - name: Run whatever nvm_commands are there # noqa 305
-  shell: "{{ user_shell.command + ' \"' +  item + '\"' }}"
+  shell: "{{ user_shell.command + ' \"nvm ' +  item + '\"' }}"
   with_items:
     "{{ nvm_commands }}"
   when: nvm_commands | length > 0
