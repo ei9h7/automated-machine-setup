@@ -112,7 +112,7 @@ homebrew_installed_packages:
   - mas-cli/tap/mas
   - micro
   - neofetch
-  - node
+# - node
   - nyancat
   - openjdk
   - p7zip
@@ -140,8 +140,7 @@ homebrew_installed_packages:
 # - zsh
 # - zsh-git-prompt
 # - zsh-lovers
-homebrew_uninstalled_packages:
-  - rclone
+homebrew_uninstalled_packages: []
 homebrew_cask_appdir: "/Applications"
 homebrew_cask_apps:
   - angry-ip-scanner
@@ -178,8 +177,8 @@ homebrew_cask_apps:
   - macs-fan-control
   - macvim
 # - meld
-  - microsoft-auto-update
-  - microsoft-office
+# - microsoft-auto-update
+# - microsoft-office
   - multipass
   - netspot
   - nordlocker
@@ -188,9 +187,9 @@ homebrew_cask_apps:
   - nova
   - nvidia-geforce-now
   - obs
-  - obs-ndi
-  - obs-virtualcam
-  - obs-websocket
+# - obs-ndi
+# - obs-virtualcam
+# - obs-websocket
 # - parallels12
   - plex
   - plexamp
@@ -326,26 +325,24 @@ mas_installed_apps:
   - { id: 497799835, name: "Xcode" }
   - { id: 1237435595, name: "XCRegex" }
   - { id: 1438287690, name: "ZipMounter Lite" }
-mas_upgrade_all_apps: false
+mas_upgrade_all_apps: true
 mas_email: "eight0n@me.com"
 mas_signin_dialog: true
 
 # Install packages from other package managers.
 composer_packages: []
 
-gem_packages:
-  - name: colorls
-    state: latest
+gem_packages: []
+# - name: colorls
+#   state: latest
 
-npm_packages:
-  - name: yarn
-    state: latest
+npm_packages: []
 
 pip_packages:
-  - name: pyrit
-    state: latest
-  - name: requests
-    state: latest
+# - name: pyrit
+#   state: latest
+# - name: requests
+#   state: latest
   - name: ansible
     state: latest 
      

@@ -55,4 +55,5 @@ ansible-galaxy install -r requirements.yml
 
 # run machine setup/update ansible playbook
 chmod +x update
-sh update
+ln -sf update /usr/local/bin/update-machine
+sh update-machine
