@@ -9,7 +9,7 @@ secrets_vault: "secrets.yml"
 # Configure dotfiles for this system
 configure_dotfiles: true
 dotfiles_repo: "https://github.com/ei9h7/dotfiles.git"
-dotfiles_repo_version: "linux-debian"
+dotfiles_repo_version: "linux"
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/repos/dotfiles"
 dotfiles_home: "{{ lookup('env', 'HOME') }}"
