@@ -54,9 +54,9 @@ fi
 
 #install machine setup ansible requirements
 echo 'Install Ansible Galaxy Requirements'
-ansible-galaxy install -r requirements.yml
+ansible-galaxy install -r requirements.yml -vvv
 
 # run machine setup/update ansible playbook
 chmod +x update
 ln -sf update /usr/local/bin/update-machine
-/usr/local/bin/update-machine
+./update
