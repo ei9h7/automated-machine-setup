@@ -1,7 +1,7 @@
 ---
 downloads: "{{ lookup('env', 'HOME') }}/.ansible-downloads/"
 
-# Configuration for macOS iMac
+# Configuration for macOS  macbookpro9,1
 
 # Ansible Vault Secrets File
 secrets_vault: "secrets.yml"
@@ -9,7 +9,7 @@ secrets_vault: "secrets.yml"
 # Configure dotfiles for this system
 configure_dotfiles: true
 dotfiles_repo: "https://github.com/ei9h7/dotfiles.git"
-dotfiles_repo_version: "debian-linux"
+dotfiles_repo_version: "macos"
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: "{{ lookup('env', 'HOME') }}/repos/dotfiles"
 dotfiles_home: "{{ lookup('env', 'HOME') }}"
@@ -55,7 +55,7 @@ homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/u
 homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
 homebrew_brew_bin_path: "{{ homebrew_prefix }}/bin"
 homebrew_cache_path: "{{ homebrew_brew_bin_path }}/brew --cache"
-homebrew_upgrade_all_packages: false
+homebrew_upgrade_all_packages: true
 homebrew_cask_accept_external_apps: true
 homebrew_use_brewfile: false
 homebrew_brewfile_dir: "{{ dotfiles_repo_local_destination }}"
@@ -120,6 +120,7 @@ homebrew_installed_packages:
 # - perl@5.18
   - pinentry-mac
 # - pyenv
+# Brew rclone doesnt work with mount
 # - rclone
   - rsync
   - rsync-time-backup
@@ -155,7 +156,8 @@ homebrew_cask_apps:
   - carbon-copy-cloner5
   - coderunner 
   - command-pad
-  - docker
+# Docker desktop no longer supported
+# - docker
   - duplicati
   - font-fira-code-nerd-font
   - font-fira-mono-nerd-font
