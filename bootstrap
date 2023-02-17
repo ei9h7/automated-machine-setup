@@ -21,19 +21,22 @@ echo "Checking Homebrew Install"
 # Install Homebrew if it is not installed
 if [[ $(command -v brew) == "" ]]; then 
   echo "Installing Homebrew.. "
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/usr/local/bin/brew shellenv)"
 else
   echo "Updating Homebrew.. "
+  eval "$(/usr/local/bin/brew shellenv)"
   brew update
 fi
 
 #install python3/pip
-echo "Checking Python3/pip Install"
-# Install if Python3/pip is not installed yet
-command -v pip3 &> /dev/null
+echo "Checking Brew Python3/pip Install"
+# Install if Python3/pip is not installed by Brew yet
+command -v /usr/local/bin/pip3 &> /dev/null
 if [ $? -ne 0 ]; then
     echo 'pip3 not found. Installing pip...'
     brew install python3
+    brew link -f python3
 else
      echo 'python3/pip already installed.' 
 fi
@@ -44,7 +47,7 @@ echo "Checking for Ansible Install"
 pip3 show ansible &> /dev/null
 if [ $? -ne 0 ]; then
     echo 'Ansible not found. Installing Ansible...'
-    /usr/local/bin/pip3 install ansible --ignore-installed
+    pip3 install ansible --ignore-installed
 else
      echo 'Ansible already installed.' 
 fi
@@ -56,4 +59,4 @@ ansible-galaxy install -r requirements.yml
 # run machine setup/update ansible playbook
 chmod +x update
 ln -sf update /usr/local/bin/update-machine
-sh update-machine
+/usr/local/bin/update-machine
