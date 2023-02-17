@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo 'Running Machine Setup Playbook'
-ansible-playbook main.yml
+ansible-playbook main.yml -K
